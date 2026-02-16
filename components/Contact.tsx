@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight, Mail, MessageCircle } from 'lucide-react';
 
 export const Contact: React.FC = () => {
   return (
@@ -16,13 +16,17 @@ export const Contact: React.FC = () => {
           Discutons de vos besoins en développement, automatisation ou ingénierie technique BTP.
           Un premier échange pour valider la faisabilité de votre projet.
         </p>
-        
+
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <a href="mailto:contact@auradsystem.com" className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-aurad-500 text-white font-bold rounded-lg hover:bg-aurad-400 hover:shadow-[0_0_25px_rgba(34,211,238,0.6)] transition-all">
+          <a href="mailto:dali.bensalem@auradsystem.com" className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-aurad-500 text-white font-bold rounded-lg hover:bg-aurad-400 hover:shadow-[0_0_25px_rgba(34,211,238,0.6)] transition-all">
             <Mail className="w-5 h-5" />
             Me contacter par email
           </a>
-          <a href="https://www.linkedin.com/in/mohamed-ali-ben-salem-2b777b9a/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-slate-800 text-white font-semibold rounded-lg hover:bg-slate-700 border border-slate-700 transition-all">
+          <a href="https://wa.me/33685189260" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-green-600 text-white font-bold rounded-lg hover:bg-green-500 hover:shadow-[0_0_25px_rgba(34,197,94,0.6)] transition-all">
+            <MessageCircle className="w-5 h-5" />
+            WhatsApp
+          </a>
+          <a href="https://www.linkedin.com/in/dalibensalem" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-slate-800 text-white font-semibold rounded-lg hover:bg-slate-700 border border-slate-700 transition-all">
             Voir mon profil LinkedIn <ArrowRight className="w-5 h-5" />
           </a>
         </div>
