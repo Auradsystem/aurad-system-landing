@@ -31,7 +31,7 @@ const services = [
     items: [
       {
         title: "Sûreté & Sécurité",
-        desc: "Vidéosurveillance, contrôle d'accès, interphonie. Rédaction de CCTP, analyse des offres, pilotage chantier et réception des installations conformes.",
+        desc: "Vidéosurveillance, caméras thermiques, contrôle d'accès, interphonie. Rédaction de CCTP, analyse des offres, pilotage chantier et réception des installations conformes.",
         icon: <Shield className="w-5 h-5" />
       },
       {

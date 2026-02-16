@@ -8,7 +8,7 @@ const faqs = [
   },
   {
     question: "Quels lots techniques couvrez-vous ?",
-    answer: "Vidéosurveillance, contrôle d'accès, interphonie, sécurité incendie (détection, sprinklage, désenfumage), GTC/GTB (gestion technique centralisée), et électricité CFO/CFA. L'intervention couvre toutes les phases : audit de besoins, rédaction de CCTP, analyse des offres, pilotage chantier et réception."
+    answer: "Vidéosurveillance, caméras thermiques, contrôle d'accès, interphonie, sécurité incendie (détection, sprinklage, désenfumage), GTC/GTB (gestion technique centralisée), et électricité CFO/CFA. L'intervention couvre toutes les phases : audit de besoins, rédaction de CCTP, analyse des offres, pilotage chantier et réception."
   },
   {
     question: "Comment aidez-vous les entreprises BTP à répondre aux appels d'offres ?",
@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     question: "Quelle différence avec un bureau d'études généraliste ?",
-    answer: "Intervention directe sans sous-traitance, avec une expertise pointue sur les lots spéciaux. Interlocuteur unique du premier rendez-vous à la réception. Double compétence BTP + digital permettant de créer des outils métier sur-mesure si nécessaire."
+    answer: "Intervention directe sans sous-traitance, avec une expertise pointue sur les lots spéciaux. Interlocuteur unique du premier rendez-vous à la réception. Réseau de partenaires architectes pour couvrir l'ensemble de vos besoins. Double compétence BTP + digital permettant de créer des outils métier sur-mesure si nécessaire."
   },
   {
     question: "Qu'est-ce que la valorisation CEE et comment en bénéficier ?",

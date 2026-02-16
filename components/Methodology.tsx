@@ -29,7 +29,7 @@ const scenarios: Scenario[] = [
     tabTitle: 'Vous lancez un projet',
     tabSub: 'AMO / MOE',
     title: "Vous lancez un projet de construction ou rénovation",
-    description: "Vous avez un projet avec des lots techniques (sécurité, incendie, contrôle d'accès, GTC). Vous n'avez pas l'expertise interne pour cadrer les besoins, choisir les entreprises, piloter le chantier.",
+    description: "Vous avez un projet avec des lots techniques (sécurité, incendie, contrôle d'accès, caméras thermiques, GTC). Vous n'avez pas l'expertise interne pour cadrer les besoins, choisir les entreprises, piloter le chantier.",
     steps: [
       { title: "Audit de besoins", desc: "Contraintes réglementaires, calendrier, budget, identification des opérations éligibles aux CEE.", iconName: "ClipboardList" },
       { title: "Rédaction de CCTP", desc: "Cahiers des charges pour chaque lot. Les entreprises savent ce qu'on attend d'elles.", iconName: "FileText" },
@@ -63,12 +63,12 @@ const scenarios: Scenario[] = [
   {
     id: 'moe',
     tabIcon: 'Users',
-    tabTitle: "Vous êtes architecte",
+    tabTitle: "Vous êtes MOE",
     tabSub: 'Renfort lots spéciaux',
-    title: "Vous êtes architecte MOE",
-    description: "Vous pilotez un projet de construction ou rénovation. L'architecture et la coordination générale, c'est votre métier. Les lots techniques (sécurité incendie, GTC, contrôle d'accès), pas forcément.",
+    title: "Vous êtes architecte ou MOE",
+    description: "Vous pilotez un projet de construction ou rénovation. La coordination générale, c'est votre métier. Les lots techniques (sécurité incendie, caméras thermiques, GTC, contrôle d'accès), pas forcément. Je travaille avec un réseau de partenaires architectes pour couvrir l'ensemble de vos besoins.",
     steps: [
-      { title: "CCTP techniques", desc: "Rédaction des cahiers des charges lots spéciaux (sécurité, incendie, GTC, CFO/CFA).", iconName: "FileJson" },
+      { title: "CCTP techniques", desc: "Rédaction des cahiers des charges lots spéciaux (sécurité, incendie, caméras thermiques, GTC, CFO/CFA).", iconName: "FileJson" },
       { title: "Analyse des offres", desc: "Comparaison des offres des entreprises spécialisées.", iconName: "Users" },
       { title: "Coordination chantier", desc: "Pilotage lots techniques, interfaces électricité / GTC / sécurité.", iconName: "Activity" },
       { title: "Réceptions techniques", desc: "Validation des installations et des DOE. Projet complet.", iconName: "Award" },
