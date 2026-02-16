@@ -15,13 +15,13 @@ export const Footer: React.FC = () => {
           </div>
 
           <div className="flex gap-6">
-            <a href="mailto:dali.bensalem@auradsystem.com" className="text-gray-400 hover:text-aurad-400 transition-colors">
+            <a href="mailto:dali.bensalem@auradsystem.com" aria-label="Envoyer un email" className="text-gray-400 hover:text-aurad-400 transition-colors">
                 <Mail size={24} />
             </a>
-            <a href="https://wa.me/33685189260" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-400 transition-colors">
+            <a href="https://wa.me/33685189260" target="_blank" rel="noopener noreferrer" aria-label="Contacter sur WhatsApp" className="text-gray-400 hover:text-green-400 transition-colors">
                 <MessageCircle size={24} />
             </a>
-            <a href="https://www.linkedin.com/in/dalibensalem" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-aurad-400 transition-colors">
+            <a href="https://www.linkedin.com/in/dalibensalem" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn" className="text-gray-400 hover:text-aurad-400 transition-colors">
                 <Linkedin size={24} />
             </a>
           </div>

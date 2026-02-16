@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section id="hero" aria-label="Présentation Aurad System" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       
       {/* Video Background */}
       <video
@@ -11,6 +11,8 @@ export const Hero: React.FC = () => {
         loop
         muted
         playsInline
+        preload="metadata"
+        aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover opacity-20 z-[1]"
         src="/videos/aurad-logo.webm"
       />
@@ -72,6 +74,6 @@ export const Hero: React.FC = () => {
             <div className="w-1 h-2 bg-aurad-400 rounded-full"></div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

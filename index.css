@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --color-aurad-50: #f0fdff;
+  --color-aurad-100: #cffafe;
+  --color-aurad-200: #a5f3fc;
+  --color-aurad-300: #67e8f9;
+  --color-aurad-400: #22d3ee;
+  --color-aurad-500: #06b6d4;
+  --color-aurad-600: #0891b2;
+  --color-aurad-700: #0e7490;
+  --color-aurad-800: #155e75;
+  --color-aurad-900: #083344;
+  --color-aurad-950: #020617;
+
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: #020617;
+  color: #e2e8f0;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.neon-text {
+  text-shadow: 0 0 10px rgba(34, 211, 238, 0.5), 0 0 20px rgba(34, 211, 238, 0.3);
+}
+
+.neon-border {
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.2), inset 0 0 10px rgba(34, 211, 238, 0.1);
+}

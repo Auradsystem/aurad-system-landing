@@ -5,6 +5,7 @@ import { Services } from './components/Services';
 import { Methodology } from './components/Methodology';
 import { About } from './components/About';
 import { Contact } from './components/Contact';
+import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
 import { Analytics } from '@vercel/analytics/react';
 
@@ -18,6 +19,7 @@ function App() {
         <Methodology />
         <About />
         <Contact />
+        <FAQ />
       </main>
       <Footer />
       <Analytics />
