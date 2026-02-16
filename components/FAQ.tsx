@@ -43,8 +43,8 @@ export const FAQ: React.FC = () => {
         <div className="space-y-4">
           {faqs.map((faq, idx) => (
             <details key={idx} className="glass-card rounded-xl group">
-              <summary className="p-6 cursor-pointer flex items-center justify-between text-base md:text-lg font-semibold text-white hover:text-aurad-400 transition-colors list-none">
-                <span className="pr-4">{faq.question}</span>
+              <summary className="p-6 cursor-pointer flex items-center justify-between text-white hover:text-aurad-400 transition-colors list-none">
+                <h3 className="inline text-base md:text-lg font-semibold pr-4">{faq.question}</h3>
                 <ChevronDown className="w-5 h-5 shrink-0 text-aurad-400 group-open:rotate-180 transition-transform" />
               </summary>
               <div className="px-6 pb-6 text-gray-400 leading-relaxed">

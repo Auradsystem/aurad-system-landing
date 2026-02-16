@@ -38,11 +38,11 @@ export const About: React.FC = () => {
               En tant qu'indépendant et fondateur d'Aurad System depuis juillet 2024, j'accompagne les PME/ETI du BTP et au-delà avec une double expertise : le développement de solutions digitales sur-mesure et l'ingénierie technique (AMO/MOE) sur les lots spéciaux.
             </p>
 
-            <div className="glass-card p-6 rounded-xl border-l-4 border-l-aurad-500">
+            <blockquote className="glass-card p-6 rounded-xl border-l-4 border-l-aurad-500">
               <p className="italic text-gray-400">
                 "Une approche terrain, de l'audit au déploiement, pour des solutions qui répondent vraiment à vos enjeux métier."
               </p>
-            </div>
+            </blockquote>
           </div>
 
           <div className="lg:col-span-7">
