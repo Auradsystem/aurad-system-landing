@@ -10,10 +10,10 @@ export const Contact: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 text-center">
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
           Prêt à accélérer votre <br />
-          <span className="text-aurad-400 neon-text">Transformation ?</span>
+          <span className="text-aurad-400 neon-text">transformation ?</span>
         </h2>
         <p className="text-xl text-gray-400 mb-10">
-          Discutons de vos besoins d'automatisation ou de développement. 
+          Discutons de vos besoins en développement, automatisation ou ingénierie technique BTP.
           Un premier échange pour valider la faisabilité de votre projet.
         </p>
         

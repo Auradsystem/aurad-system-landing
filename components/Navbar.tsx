@@ -4,8 +4,8 @@ import { Logo } from './Logo';
 
 const navItems = [
   { label: 'Services', href: '#services' },
+  { label: 'Méthodologie', href: '#methodology' },
   { label: 'Approche', href: '#approach' },
-  { label: 'À propos', href: '#approach' },
 ];
 
 export const Navbar: React.FC = () => {

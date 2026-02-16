@@ -4,17 +4,17 @@ import { Target, Rocket, Lightbulb, Check } from 'lucide-react';
 const steps = [
   {
     title: "Vision MOA",
-    desc: "Je ne code pas aveuglément. Je pars de votre besoin métier pour définir la meilleure stratégie technique.",
+    desc: "Projet BTP ? J'analyse vos contraintes réglementaires, votre calendrier, votre budget. Besoin d'un outil digital ? J'identifie ce qui doit être automatisé. Pas de solution technique cherchant un problème.",
     icon: <Target className="w-6 h-6" />
   },
   {
-    title: "Conception Sur-Mesure",
-    desc: "Architecture adaptée à votre taille actuelle et future. Pas de 'sur-ingénierie' inutile.",
+    title: "Conception sur-mesure",
+    desc: "CCTP précis pour vos lots techniques. Architecture applicative scalable pour vos outils métier. Adapté à votre taille actuelle et future, sans sur-ingénierie.",
     icon: <Lightbulb className="w-6 h-6" />
   },
   {
-    title: "Livraison Complète",
-    desc: "Accompagnement de A à Z : développement, tests, déploiement et maintenance.",
+    title: "Livraison complète",
+    desc: "Projet BTP : pilotage chantier, coordination des entreprises, réception, DOE validés. Projet digital : développement, tests, déploiement, formation. Un livrable opérationnel, pas un dossier d'études.",
     icon: <Rocket className="w-6 h-6" />
   }
 ];
@@ -31,16 +31,16 @@ export const About: React.FC = () => {
           
           <div className="lg:col-span-5">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-              Une Approche <br />
-              <span className="text-aurad-400">Pragmatique</span>
+              Une approche <br />
+              <span className="text-aurad-400">pragmatique</span>
             </h2>
             <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-              En tant qu'indépendant et fondateur d'Aurad System depuis juillet 2024, ma mission est claire : démocratiser les outils puissants réservés aux grands groupes pour les mettre au service des PME.
+              En tant qu'indépendant et fondateur d'Aurad System depuis juillet 2024, j'accompagne les PME/ETI du BTP et au-delà avec une double expertise : le développement de solutions digitales sur-mesure et l'ingénierie technique (AMO/MOE) sur les lots spéciaux.
             </p>
-            
+
             <div className="glass-card p-6 rounded-xl border-l-4 border-l-aurad-500">
               <p className="italic text-gray-400">
-                "Je conçois et développe des solutions digitales pour les PME/TPE qui veulent automatiser leurs processus sans exploser leur budget."
+                "Une approche terrain, de l'audit au déploiement, pour des solutions qui répondent vraiment à vos enjeux métier."
               </p>
             </div>
           </div>

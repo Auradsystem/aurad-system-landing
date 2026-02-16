@@ -1,48 +1,53 @@
 import React from 'react';
-import { Bot, Layers, Smartphone, Database, Workflow, Cloud, CheckCircle2 } from 'lucide-react';
+import { Shield, Flame, Building2, Layers, Smartphone, Database, Cloud, Zap } from 'lucide-react';
 
 const services = [
   {
-    category: "Développement d'Applications",
+    category: "Développement d'applications",
     icon: <Smartphone className="w-8 h-8" />,
     description: "Des solutions robustes et évolutives adaptées à votre métier.",
     items: [
       {
-        title: "Applications Web SaaS",
+        title: "Applications web SaaS",
         desc: "Solutions complètes avec authentification, gestion d'équipes, facturation et tableaux de bord.",
         icon: <Cloud className="w-5 h-5" />
       },
       {
-        title: "Outils Métier Sur-Mesure",
+        title: "Outils métier sur-mesure",
         desc: "Gestion commerciale, simulateurs, générateurs de documents automatisés.",
         icon: <Database className="w-5 h-5" />
       },
       {
-        title: "Architecture Multi-tenant",
+        title: "Architecture multi-tenant",
         desc: "Infrastructure pensée pour la scalabilité et la sécurité des données.",
         icon: <Layers className="w-5 h-5" />
       }
     ]
   },
   {
-    category: "IA & Automatisation",
-    icon: <Bot className="w-8 h-8" />,
-    description: "L'intelligence artificielle au service de votre productivité.",
+    category: "Ingénierie technique BTP",
+    icon: <Building2 className="w-8 h-8" />,
+    description: "Assistance à maîtrise d'ouvrage et maîtrise d'œuvre pour vos projets techniques.",
     items: [
       {
-        title: "Intégration IA Générative",
-        desc: "Chatbots intelligents, assistants virtuels et analyse automatique de documents.",
-        icon: <Bot className="w-5 h-5" />
+        title: "Sûreté & Sécurité",
+        desc: "Vidéosurveillance, contrôle d'accès, interphonie. Rédaction de CCTP, analyse des offres, pilotage chantier et réception des installations conformes.",
+        icon: <Shield className="w-5 h-5" />
       },
       {
-        title: "Orchestration de Flux",
-        desc: "Automatisation via webhooks et connexion entre vos outils existants (Zapier, n8n).",
-        icon: <Workflow className="w-5 h-5" />
+        title: "Sécurité incendie",
+        desc: "Détection incendie, sprinklage, désenfumage. De l'audit réglementaire (APSAD, ERP) à la mise en service, pour des installations conformes dès la première réception.",
+        icon: <Flame className="w-5 h-5" />
       },
       {
-        title: "Connexions Systèmes",
-        desc: "Synchronisation parfaite entre votre ERP, CRM et APIs tierces.",
+        title: "Systèmes techniques",
+        desc: "GTC/GTB, électricité CFO/CFA. Coordination des lots techniques, gestion des interfaces entre corps d'état, validation de la cohérence des installations.",
         icon: <Layers className="w-5 h-5" />
+      },
+      {
+        title: "Valorisation CEE",
+        desc: "Montage des dossiers CEE sur vos opérations éligibles (GTB, éclairage, CVC). Réseau de partenaires obligés et délégataires pour maximiser le financement de vos travaux.",
+        icon: <Zap className="w-5 h-5" />
       }
     ]
   }
@@ -55,7 +60,7 @@ export const Services: React.FC = () => {
         
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-            Expertise <span className="text-aurad-400">Technique</span>
+            Expertise <span className="text-aurad-400">technique</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
             Deux piliers d'expertise pour transformer votre activité.
