@@ -35,7 +35,7 @@ export const About: React.FC = () => {
               <span className="text-aurad-400">pragmatique</span>
             </h2>
             <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-              En tant qu'indépendant et fondateur d'Aurad System depuis juillet 2024, j'accompagne les PME/ETI du BTP et au-delà avec une double expertise : le développement de solutions digitales sur-mesure et l'ingénierie technique (AMO/MOE) sur les lots spéciaux.
+              En tant qu'indépendant et fondateur d'Aurad System depuis juillet 2024, j'accompagne les PME/ETI du BTP et au-delà avec une double expertise : le développement de solutions digitales sur-mesure et l'ingénierie technique (AMO/MOE) sur les lots spéciaux. Ancien chargé de TD en Risk Management à l'ESTP, j'apporte également une approche structurée de la gestion des risques à chaque projet.
             </p>
 
             <blockquote className="glass-card p-6 rounded-xl border-l-4 border-l-aurad-500">

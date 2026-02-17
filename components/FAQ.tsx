@@ -25,6 +25,10 @@ const faqs = [
   {
     question: "Qu'est-ce que la valorisation CEE et comment en bénéficier ?",
     answer: "Les CEE (Certificats d'Économies d'Énergie) sont des subventions pour financer les travaux d'efficacité énergétique. Nous identifions les opérations éligibles sur vos projets (GTB, éclairage LED, CVC) et montons les dossiers CEE avec notre réseau de partenaires obligés pour maximiser le financement."
+  },
+  {
+    question: "Qu'est-ce que la certification APSAD et pourquoi se faire certifier ?",
+    answer: "La certification APSAD (I7 pour l'installation, F7 pour la maintenance) atteste de la compétence d'une entreprise en sécurité incendie et sûreté. Elle est souvent exigée dans les marchés publics et les grands comptes privés. Se faire certifier, c'est accéder à de nouveaux marchés, rassurer vos clients sur la qualité de vos prestations, et vous différencier de la concurrence. Je vous accompagne dans la préparation du dossier et la mise en conformité de vos processus."
   }
 ];
 

@@ -1,26 +1,26 @@
 import React from 'react';
-import { Shield, Flame, Building2, Layers, Smartphone, Database, Cloud, Zap } from 'lucide-react';
+import { Shield, Flame, Building2, Layers, Smartphone, Database, Zap, FileText, BarChart2, Award } from 'lucide-react';
 
 const services = [
   {
     category: "Développement d'applications",
     icon: <Smartphone className="w-8 h-8" />,
-    description: "Des solutions robustes et évolutives adaptées à votre métier.",
+    description: "Vous perdez du temps sur des tâches répétitives et manquez de visibilité sur vos projets ? Des outils conçus pour le BTP, pas des logiciels génériques.",
     items: [
       {
-        title: "Applications web SaaS",
-        desc: "Solutions complètes avec authentification, gestion d'équipes, facturation et tableaux de bord.",
-        icon: <Cloud className="w-5 h-5" />
+        title: "Automatisation documentaire",
+        desc: "Vous perdez des heures à copier-coller des données entre vos devis, mémoires techniques et rapports ? Vos documents types se remplissent automatiquement avec les données du projet. Mémoires techniques, CCTP, rapports de chantier générés en quelques clics.",
+        icon: <FileText className="w-5 h-5" />
       },
       {
-        title: "Outils métier sur-mesure",
-        desc: "Gestion commerciale, simulateurs, générateurs de documents automatisés.",
+        title: "Suivi chantier & exploitation",
+        desc: "Suivi d'avancement sur Excel, réserves qui se perdent par email, DOE incomplets à la livraison ? Applications de suivi chantier, levées de réserves, gestion des DOE et pointage. Vos indicateurs budgétaires et planning accessibles en temps réel.",
+        icon: <BarChart2 className="w-5 h-5" />
+      },
+      {
+        title: "Plateformes métier sur-mesure",
+        desc: "Vos équipes jonglent entre 5 outils différents sans vision globale ? CRM adapté au BTP, simulateurs de chiffrage, portails clients, GMAO légère. Une plateforme unique pour centraliser votre activité, même sur plusieurs sites.",
         icon: <Database className="w-5 h-5" />
-      },
-      {
-        title: "Architecture multi-tenant",
-        desc: "Infrastructure pensée pour la scalabilité et la sécurité des données.",
-        icon: <Layers className="w-5 h-5" />
       }
     ]
   },
@@ -48,6 +48,11 @@ const services = [
         title: "Valorisation CEE",
         desc: "Montage des dossiers CEE sur vos opérations éligibles (GTB, éclairage, CVC). Réseau de partenaires obligés et délégataires pour maximiser le financement de vos travaux.",
         icon: <Zap className="w-5 h-5" />
+      },
+      {
+        title: "Certifications & Risk Management",
+        desc: "Accompagnement à la certification APSAD (I7 installation, F7 maintenance) : un atout pour remporter les marchés publics et rassurer vos clients. Démarches ISO 31000 (management des risques) pour structurer votre approche sécurité.",
+        icon: <Award className="w-5 h-5" />
       }
     ]
   }
