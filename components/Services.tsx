@@ -77,7 +77,7 @@ export const Services: React.FC = () => {
             <div key={idx} className="glass-card rounded-2xl p-1 relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-aurad-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
-              <div className="bg-slate-950/80 backdrop-blur-xl rounded-xl p-8 h-full relative z-10">
+              <div className="bg-slate-950/95 md:bg-slate-950/80 md:backdrop-blur-xl rounded-xl p-8 h-full relative z-10">
                 <div className="flex items-center gap-4 mb-8">
                   <div className="w-16 h-16 rounded-xl bg-aurad-500/10 flex items-center justify-center text-aurad-400 border border-aurad-500/20 group-hover:scale-110 transition-transform duration-300">
                     {service.icon}

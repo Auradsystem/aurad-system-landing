@@ -1,28 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 
 export const Hero: React.FC = () => {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)');
+    setIsDesktop(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
   return (
     <section id="hero" aria-label="Présentation Aurad System" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      
-      {/* Video Background */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover opacity-20 z-[1]"
-        src="/videos/aurad-logo.webm"
-      />
 
-      {/* Background Elements */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-aurad-500/20 rounded-full blur-[120px] z-[2] opacity-60 pointer-events-none" aria-hidden="true"></div>
-      <div className="absolute bottom-0 right-0 w-[600px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] z-[2] pointer-events-none" aria-hidden="true"></div>
-      
+      {/* Video Background - desktop only (1.1 MB skip on mobile) */}
+      {isDesktop && (
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover opacity-20 z-[1]"
+        >
+          <source src="/videos/aurad-logo.webm" type="video/webm" />
+        </video>
+      )}
+
+      {/* Background Elements - hidden on mobile to save GPU */}
+      <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-aurad-500/20 rounded-full blur-[120px] z-[2] opacity-60 pointer-events-none" aria-hidden="true"></div>
+      <div className="hidden md:block absolute bottom-0 right-0 w-[600px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] z-[2] pointer-events-none" aria-hidden="true"></div>
+
+      {/* Lightweight mobile gradient replacement */}
+      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-aurad-900/40 via-transparent to-aurad-950/60 z-[2] pointer-events-none" aria-hidden="true"></div>
+
       {/* Circuit Grid Background */}
-      <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-20 z-[2] pointer-events-none" aria-hidden="true"></div>
+      <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-20 z-[2] pointer-events-none hidden md:block" aria-hidden="true"></div>
       <div className="absolute inset-0 z-[2] pointer-events-none" 
            style={{
              backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)',
@@ -55,12 +71,12 @@ export const Hero: React.FC = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a href="#contact" className="group relative px-8 py-4 bg-aurad-500 text-white font-bold rounded-lg overflow-hidden transition-all hover:bg-aurad-400 hover:shadow-[0_0_20px_rgba(34,211,238,0.5)]">
+              <a href="#contact" className="group relative px-8 py-4 bg-aurad-500 text-white font-bold rounded-lg overflow-hidden transition-colors hover:bg-aurad-400 hover:shadow-[0_0_20px_rgba(34,211,238,0.5)]">
                 <span className="relative z-10 flex items-center gap-2">
                   Démarrer un projet <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </a>
-              <a href="#services" className="px-8 py-4 bg-white/5 border border-white/10 text-white font-semibold rounded-lg hover:bg-white/10 transition-all backdrop-blur-sm">
+              <a href="#services" className="px-8 py-4 bg-white/5 border border-white/10 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors">
                 Découvrir mes services
               </a>
             </div>

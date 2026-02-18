@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Services } from './components/Services';
-import { Methodology } from './components/Methodology';
-import { About } from './components/About';
-import { Contact } from './components/Contact';
-import { FAQ } from './components/FAQ';
-import { Footer } from './components/Footer';
 import { Analytics } from '@vercel/analytics/react';
+
+const Methodology = lazy(() => import('./components/Methodology').then(m => ({ default: m.Methodology })));
+const About = lazy(() => import('./components/About').then(m => ({ default: m.About })));
+const Contact = lazy(() => import('./components/Contact').then(m => ({ default: m.Contact })));
+const FAQ = lazy(() => import('./components/FAQ').then(m => ({ default: m.FAQ })));
+const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
 
 function App() {
   return (
@@ -19,12 +20,16 @@ function App() {
       <main id="main-content">
         <Hero />
         <Services />
-        <Methodology />
-        <About />
-        <Contact />
-        <FAQ />
+        <Suspense fallback={null}>
+          <Methodology />
+          <About />
+          <Contact />
+          <FAQ />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
       <Analytics />
     </div>
   );

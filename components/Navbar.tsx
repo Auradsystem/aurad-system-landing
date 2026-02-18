@@ -14,15 +14,22 @@ export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <nav aria-label="Navigation principale" className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-aurad-950/80 backdrop-blur-lg border-b border-white/5' : 'bg-transparent'}`}>
+    <nav aria-label="Navigation principale" className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-aurad-950/90 md:bg-aurad-950/80 md:backdrop-blur-lg border-b border-white/5' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
@@ -46,7 +53,7 @@ export const Navbar: React.FC = () => {
                   {item.label}
                 </a>
               ))}
-              <a href="#contact" className="bg-aurad-400/10 border border-aurad-400 text-aurad-400 hover:bg-aurad-400 hover:text-aurad-950 transition-all px-6 py-2 rounded-full text-sm font-semibold neon-border">
+              <a href="#contact" className="bg-aurad-400/10 border border-aurad-400 text-aurad-400 hover:bg-aurad-400 hover:text-aurad-950 transition-colors px-6 py-2 rounded-full text-sm font-semibold neon-border">
                 Contact
               </a>
             </div>
@@ -69,7 +76,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div id="mobile-menu" className="md:hidden bg-aurad-950/95 backdrop-blur-xl border-b border-white/10">
+        <div id="mobile-menu" className="md:hidden bg-aurad-950/98 border-b border-white/10">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
               <a

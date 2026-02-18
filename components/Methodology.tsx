@@ -105,7 +105,7 @@ export const Methodology: React.FC = () => {
             <button
               key={s.id}
               onClick={() => setActiveId(s.id)}
-              className={`flex items-center gap-3 px-5 py-4 rounded-xl transition-all duration-300 border text-left ${
+              className={`flex items-center gap-3 px-5 py-4 rounded-xl transition-colors duration-300 border text-left ${
                 activeId === s.id
                   ? 'bg-slate-800 border-aurad-500/40 shadow-[0_0_15px_rgba(6,182,212,0.15)] -translate-y-0.5'
                   : 'bg-slate-800/30 border-white/5 hover:border-white/10 hover:bg-slate-800/50'
@@ -128,7 +128,7 @@ export const Methodology: React.FC = () => {
 
         {/* Active scenario content - 2 column layout */}
         <div className="glass-card rounded-2xl p-1 relative overflow-hidden">
-          <div className="bg-slate-950/80 backdrop-blur-xl rounded-xl p-6 md:p-10 relative z-10">
+          <div className="bg-slate-950/95 md:bg-slate-950/80 md:backdrop-blur-xl rounded-xl p-6 md:p-10 relative z-10">
 
             <div className="flex flex-col lg:flex-row gap-10">
 
