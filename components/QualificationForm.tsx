@@ -27,7 +27,7 @@ const INITIAL_DATA: FormData = {
   company: '',
 };
 
-const WEBHOOK_URL = 'https://n8n.auradsystem.com/webhook/qualification';
+const WEBHOOK_URL = import.meta.env.VITE_N8N_WEBHOOK_URL || 'https://n8n.srv752974.hstgr.cloud/webhook/qualification';
 
 const TOTAL_STEPS = 5;
 
