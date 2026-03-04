@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Smartphone, Building2, ArrowRight, ArrowLeft, CheckCircle, Send, Loader2 } from 'lucide-react';
+import { Smartphone, Building2, ArrowRight, ArrowLeft, CheckCircle, Send, Loader2, Lock } from 'lucide-react';
 
 type Domain = 'digital' | 'btp' | null;
 type Timeline = 'urgent' | 'court' | 'moyen' | 'exploration' | null;
@@ -261,6 +261,10 @@ export const QualificationForm: React.FC = () => {
           </div>
         </div>
       </div>
+      <div className="mt-6 flex items-center justify-center gap-2 text-xs text-gray-500 bg-white/[0.02] p-3 rounded-lg border border-white/5">
+        <Lock className="w-3.5 h-3.5" />
+        <p>Vos données sont strictement confidentielles. Promis, zéro spam.</p>
+      </div>
       {error && (
         <p className="mt-4 text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-3">{error}</p>
       )}
@@ -373,19 +377,24 @@ export const QualificationForm: React.FC = () => {
                 type="button"
                 onClick={handleSubmit}
                 disabled={!canAdvance() || submitting}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-aurad-500 text-white font-semibold rounded-lg hover:bg-aurad-400 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-aurad-500 disabled:hover:shadow-none"
+                className="group relative inline-flex items-center gap-2 px-6 py-3 bg-aurad-500 text-white font-semibold rounded-lg hover:bg-aurad-400 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all overflow-hidden disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-aurad-500 disabled:hover:shadow-none"
               >
-                {submitting ? (
-                  <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    Envoi...
-                  </>
-                ) : (
-                  <>
-                    Envoyer
-                    <Send className="w-4 h-4" />
-                  </>
+                {!submitting && !(!canAdvance()) && (
+                  <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-0"></div>
                 )}
+                <span className="relative z-10 flex items-center gap-2">
+                  {submitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Envoi...
+                    </>
+                  ) : (
+                    <>
+                      Envoyer
+                      <Send className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
+                    </>
+                  )}
+                </span>
               </button>
             ) : null}
           </div>

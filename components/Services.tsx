@@ -9,17 +9,35 @@ const services = [
     items: [
       {
         title: "Automatisation documentaire",
-        desc: "Vous perdez des heures à copier-coller des données entre vos devis, mémoires techniques et rapports ? Vos documents types se remplissent automatiquement avec les données du projet. Mémoires techniques, CCTP, rapports de chantier générés en quelques clics.",
+        desc: (
+          <ul className="space-y-1 mt-1 marker:text-aurad-500 list-disc list-outside ml-4">
+            <li>Vous perdez des heures à copier-coller des données entre vos documents ?</li>
+            <li>Vos documents types se remplissent automatiquement.</li>
+            <li><span className="text-white">Résultat :</span> Mémoires techniques, CCTP et rapports générés en quelques clics.</li>
+          </ul>
+        ),
         icon: <FileText className="w-5 h-5" />
       },
       {
         title: "Suivi chantier & exploitation",
-        desc: "Suivi d'avancement sur Excel, réserves qui se perdent par email, DOE incomplets à la livraison ? Applications de suivi chantier, levées de réserves, gestion des DOE et pointage. Vos indicateurs budgétaires et planning accessibles en temps réel.",
+        desc: (
+          <ul className="space-y-1 mt-1 marker:text-aurad-500 list-disc list-outside ml-4">
+            <li>Suivi sur Excel compliqué ? Réserves perdues par email ?</li>
+            <li>Déploiement d'applications dédiées au pointage et à la levée des réserves.</li>
+            <li><span className="text-white">Résultat :</span> Vos indicateurs budgétaires accessibles en temps réel.</li>
+          </ul>
+        ),
         icon: <BarChart2 className="w-5 h-5" />
       },
       {
         title: "Plateformes métier sur-mesure",
-        desc: "Vos équipes jonglent entre 5 outils différents sans vision globale ? CRM adapté au BTP, simulateurs de chiffrage, portails clients, GMAO légère. Une plateforme unique pour centraliser votre activité, même sur plusieurs sites.",
+        desc: (
+          <ul className="space-y-1 mt-1 marker:text-aurad-500 list-disc list-outside ml-4">
+            <li>Vos équipes jonglent entre trop d'outils cloisonnés ?</li>
+            <li>Création : CRM BTP, simulateurs de chiffrage, GMAO légère.</li>
+            <li><span className="text-white">Résultat :</span> Une plateforme unique pour centraliser votre activité.</li>
+          </ul>
+        ),
         icon: <Database className="w-5 h-5" />
       }
     ]
@@ -31,27 +49,57 @@ const services = [
     items: [
       {
         title: "Sûreté & Sécurité",
-        desc: "Vidéosurveillance, caméras thermiques, contrôle d'accès, interphonie. Rédaction de CCTP, analyse des offres, pilotage chantier et réception des installations conformes.",
+        desc: (
+          <ul className="space-y-1 mt-1 marker:text-aurad-500 list-disc list-outside ml-4">
+            <li>Vidéosurveillance, caméras thermiques, contrôle d'accès.</li>
+            <li>Rédaction méticuleuse des CCTP et analyse des offres.</li>
+            <li>Pilotage chantier pour une <span className="text-white">réception 100% conforme</span>.</li>
+          </ul>
+        ),
         icon: <Shield className="w-5 h-5" />
       },
       {
         title: "Sécurité incendie",
-        desc: "Détection incendie, sprinklage, désenfumage. De l'audit réglementaire (APSAD, ERP) à la mise en service, pour des installations conformes dès la première réception.",
+        desc: (
+          <ul className="space-y-1 mt-1 marker:text-aurad-500 list-disc list-outside ml-4">
+            <li>Détection incendie, sprinklage, désenfumage.</li>
+            <li>De l'audit réglementaire (APSAD, ERP) à la mise en service.</li>
+            <li><span className="text-white">Sécurité garantie</span> dès la première réception.</li>
+          </ul>
+        ),
         icon: <Flame className="w-5 h-5" />
       },
       {
         title: "Systèmes techniques",
-        desc: "GTC/GTB, électricité CFO/CFA. Coordination des lots techniques, gestion des interfaces entre corps d'état, validation de la cohérence des installations.",
+        desc: (
+          <ul className="space-y-1 mt-1 marker:text-aurad-500 list-disc list-outside ml-4">
+            <li>GTC/GTB, électricité CFO/CFA.</li>
+            <li>Coordination pointue des différents lots.</li>
+            <li>Gestion des interfaces pour une <span className="text-white">cohérence technique totale</span>.</li>
+          </ul>
+        ),
         icon: <Layers className="w-5 h-5" />
       },
       {
         title: "Valorisation CEE",
-        desc: "Montage des dossiers CEE sur vos opérations éligibles (GTB, éclairage, CVC). Réseau de partenaires obligés et délégataires pour maximiser le financement de vos travaux.",
+        desc: (
+          <ul className="space-y-1 mt-1 marker:text-aurad-500 list-disc list-outside ml-4">
+            <li>Montage de dossiers CEE (GTB, éclairage, CVC).</li>
+            <li>Accès à un vaste réseau de partenaires et délégataires.</li>
+            <li><span className="text-white">Maximisation du financement</span> de vos travaux d'économie d'énergie.</li>
+          </ul>
+        ),
         icon: <Zap className="w-5 h-5" />
       },
       {
         title: "Certifications & Risk Management",
-        desc: "Accompagnement à la certification APSAD (I7 installation, F7 maintenance) : un atout pour remporter les marchés publics et rassurer vos clients. Démarches ISO 31000 (management des risques) pour structurer votre approche sécurité.",
+        desc: (
+          <ul className="space-y-1 mt-1 marker:text-aurad-500 list-disc list-outside ml-4">
+            <li>Accompagnement à la certification APSAD (I7 installation, F7 maintenance).</li>
+            <li>Un vrai atout pour <span className="text-white">remporter vos appels d'offres publics</span>.</li>
+            <li>Démarches ISO 31000 pour sécuriser votre approche risque globale.</li>
+          </ul>
+        ),
         icon: <Award className="w-5 h-5" />
       }
     ]
@@ -96,7 +144,13 @@ export const Services: React.FC = () => {
                       </div>
                       <div>
                         <h4 className="text-lg font-semibold text-gray-200">{item.title}</h4>
-                        <p className="text-sm text-gray-400 leading-relaxed mt-1">{item.desc}</p>
+                        <div className="text-sm text-gray-400 leading-relaxed mt-2 space-y-2">
+                          {typeof item.desc === 'string' ? (
+                            <p>{item.desc}</p>
+                          ) : (
+                            item.desc
+                          )}
+                        </div>
                       </div>
                     </div>
                   ))}
