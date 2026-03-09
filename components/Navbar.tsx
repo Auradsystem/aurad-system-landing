@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
-import { Logo } from './Logo';
+import React, { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
+import { Logo } from "./Logo";
+import { pushEvent } from "@/lib/gtm";
 
 const navItems = [
-  { label: 'Services', href: '#services' },
-  { label: 'Méthodologie', href: '#methodology' },
-  { label: 'Approche', href: '#approach' },
-  { label: 'FAQ', href: '#faq' },
+  { label: "Services", href: "#services" },
+  { label: "Méthodologie", href: "#methodology" },
+  { label: "Approche", href: "#approach" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 export const Navbar: React.FC = () => {
@@ -24,17 +25,22 @@ export const Navbar: React.FC = () => {
         ticking = true;
       }
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <nav aria-label="Navigation principale" className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-aurad-950/90 md:bg-aurad-950/80 md:backdrop-blur-lg border-b border-white/5' : 'bg-transparent'}`}>
+    <nav
+      aria-label="Navigation principale"
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? "bg-aurad-950/90 md:bg-aurad-950/80 md:backdrop-blur-lg border-b border-white/5" : "bg-transparent"}`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          
           {/* Logo Section */}
-          <div className="flex-shrink-0 flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo(0,0)}>
+          <div
+            className="flex-shrink-0 flex items-center gap-3 cursor-pointer"
+            onClick={() => window.scrollTo(0, 0)}
+          >
             <Logo className="w-10 h-10" />
             <span className="text-2xl font-bold tracking-wider text-white">
               AURAD <span className="text-aurad-400">SYSTEM</span>
@@ -53,7 +59,17 @@ export const Navbar: React.FC = () => {
                   {item.label}
                 </a>
               ))}
-              <a href="#contact" className="bg-aurad-400/10 border border-aurad-400 text-aurad-400 hover:bg-aurad-400 hover:text-aurad-950 transition-colors px-6 py-2 rounded-full text-sm font-semibold neon-border">
+              <a
+                href="#contact"
+                onClick={() =>
+                  pushEvent({
+                    event: "cta_click",
+                    cta_text: "Contact",
+                    cta_location: "nav",
+                  })
+                }
+                className="bg-aurad-400/10 border border-aurad-400 text-aurad-400 hover:bg-aurad-400 hover:text-aurad-950 transition-colors px-6 py-2 rounded-full text-sm font-semibold neon-border"
+              >
                 Contact
               </a>
             </div>
@@ -65,10 +81,16 @@ export const Navbar: React.FC = () => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
-              aria-label={isMobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+              aria-label={
+                isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"
+              }
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
             >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
@@ -76,7 +98,10 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div id="mobile-menu" className="md:hidden bg-aurad-950/98 border-b border-white/10">
+        <div
+          id="mobile-menu"
+          className="md:hidden bg-aurad-950/98 border-b border-white/10"
+        >
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
               <a
@@ -88,12 +113,19 @@ export const Navbar: React.FC = () => {
                 {item.label}
               </a>
             ))}
-            <a 
-                href="#contact"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-center mt-4 bg-aurad-600 text-white px-3 py-3 rounded-md font-bold"
+            <a
+              href="#contact"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                pushEvent({
+                  event: "cta_click",
+                  cta_text: "Me Contacter",
+                  cta_location: "nav",
+                });
+              }}
+              className="block w-full text-center mt-4 bg-aurad-600 text-white px-3 py-3 rounded-md font-bold"
             >
-                Me Contacter
+              Me Contacter
             </a>
           </div>
         </div>

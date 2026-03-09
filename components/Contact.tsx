@@ -1,6 +1,7 @@
-import React from 'react';
-import { Mail, MessageCircle } from 'lucide-react';
-import { QualificationForm } from './QualificationForm';
+import React from "react";
+import { Mail, MessageCircle } from "lucide-react";
+import { QualificationForm } from "./QualificationForm";
+import { pushEvent } from "@/lib/gtm";
 
 export const Contact: React.FC = () => {
   return (
@@ -15,7 +16,8 @@ export const Contact: React.FC = () => {
             <span className="text-aurad-400 neon-text">transformation ?</span>
           </h2>
           <p className="text-xl text-gray-400">
-            Qualifiez votre besoin en 60 secondes. Nous revenons vers vous sous 24h.
+            Qualifiez votre besoin en 60 secondes. Nous revenons vers vous sous
+            24h.
           </p>
         </div>
 
@@ -27,6 +29,13 @@ export const Contact: React.FC = () => {
           <div className="flex gap-3">
             <a
               href="mailto:dali.bensalem@auradsystem.com"
+              onClick={() =>
+                pushEvent({
+                  event: "contact_click",
+                  contact_method: "email",
+                  contact_location: "contact",
+                })
+              }
               className="inline-flex items-center gap-1.5 text-gray-400 hover:text-aurad-400 transition-colors"
             >
               <Mail className="w-4 h-4" />
@@ -37,6 +46,13 @@ export const Contact: React.FC = () => {
               href="https://wa.me/33685189260"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                pushEvent({
+                  event: "contact_click",
+                  contact_method: "whatsapp",
+                  contact_location: "contact",
+                })
+              }
               className="inline-flex items-center gap-1.5 text-gray-400 hover:text-green-400 transition-colors"
             >
               <MessageCircle className="w-4 h-4" />

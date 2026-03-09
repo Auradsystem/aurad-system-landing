@@ -1,20 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowRight } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { ArrowRight } from "lucide-react";
+import { pushEvent } from "@/lib/gtm";
 
 export const Hero: React.FC = () => {
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)');
+    const mq = window.matchMedia("(min-width: 768px)");
     setIsDesktop(mq.matches);
     const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
   }, []);
 
   return (
-    <section id="hero" aria-label="Présentation Aurad System" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-
+    <section
+      id="hero"
+      aria-label="Présentation Aurad System"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+    >
       {/* Video Background - desktop only (1.1 MB skip on mobile) */}
       {isDesktop && (
         <video
@@ -31,34 +35,49 @@ export const Hero: React.FC = () => {
       )}
 
       {/* Background Elements - hidden on mobile to save GPU */}
-      <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-aurad-500/20 rounded-full blur-[120px] z-[2] opacity-60 pointer-events-none" aria-hidden="true"></div>
-      <div className="hidden md:block absolute bottom-0 right-0 w-[600px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] z-[2] pointer-events-none" aria-hidden="true"></div>
+      <div
+        className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-aurad-500/20 rounded-full blur-[120px] z-[2] opacity-60 pointer-events-none"
+        aria-hidden="true"
+      ></div>
+      <div
+        className="hidden md:block absolute bottom-0 right-0 w-[600px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] z-[2] pointer-events-none"
+        aria-hidden="true"
+      ></div>
 
       {/* Lightweight mobile gradient replacement */}
-      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-aurad-900/40 via-transparent to-aurad-950/60 z-[2] pointer-events-none" aria-hidden="true"></div>
+      <div
+        className="md:hidden absolute inset-0 bg-gradient-to-b from-aurad-900/40 via-transparent to-aurad-950/60 z-[2] pointer-events-none"
+        aria-hidden="true"
+      ></div>
 
       {/* Circuit Grid Background */}
-      <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-20 z-[2] pointer-events-none hidden md:block" aria-hidden="true"></div>
-      <div className="absolute inset-0 z-[2] pointer-events-none" 
-           style={{
-             backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)',
-             backgroundSize: '50px 50px'
-           }}>
-      </div>
+      <div
+        className="absolute inset-0 bg-[url('/noise.svg')] opacity-20 z-[2] pointer-events-none hidden md:block"
+        aria-hidden="true"
+      ></div>
+      <div
+        className="absolute inset-0 z-[2] pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)",
+          backgroundSize: "50px 50px",
+        }}
+      ></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div>
-
           {/* Text Content */}
           <div className="text-center lg:text-left max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-aurad-900/50 border border-aurad-500/30 mb-6">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-aurad-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-aurad-500"></span>
-                </span>
-                <span className="text-aurad-200 text-xs font-medium tracking-wide uppercase">Disponible pour nouveaux projets</span>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-aurad-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-aurad-500"></span>
+              </span>
+              <span className="text-aurad-200 text-xs font-medium tracking-wide uppercase">
+                Disponible pour nouveaux projets
+              </span>
             </div>
-            
+
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
               Digitalisez le BTP <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-aurad-300 to-blue-600 neon-text">
@@ -67,27 +86,50 @@ export const Hero: React.FC = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              Ingénierie technique (AMO/MOE) et développement sur-mesure pour les PME/ETI d'Île-de-France. Gagnez en rentabilité avec un interlocuteur unique qui parle votre métier.
+              Ingénierie technique (AMO/MOE) et développement sur-mesure pour
+              les PME/ETI d'Île-de-France. Gagnez en rentabilité avec un
+              interlocuteur unique qui parle votre métier.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a href="#contact" className="group relative px-8 py-4 bg-aurad-500 text-white font-bold rounded-lg overflow-hidden transition-colors hover:bg-aurad-400 hover:shadow-[0_0_20px_rgba(34,211,238,0.5)]">
+              <a
+                href="#contact"
+                onClick={() =>
+                  pushEvent({
+                    event: "cta_click",
+                    cta_text: "Evaluer mon projet",
+                    cta_location: "hero",
+                  })
+                }
+                className="group relative px-8 py-4 bg-aurad-500 text-white font-bold rounded-lg overflow-hidden transition-colors hover:bg-aurad-400 hover:shadow-[0_0_20px_rgba(34,211,238,0.5)]"
+              >
                 <span className="relative z-10 flex items-center gap-2">
-                  Évaluer mon projet <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  Évaluer mon projet{" "}
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </a>
-              <a href="#services" className="px-8 py-4 bg-white/5 border border-white/10 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors">
+              <a
+                href="#services"
+                onClick={() =>
+                  pushEvent({
+                    event: "cta_click",
+                    cta_text: "Decouvrir mes services",
+                    cta_location: "hero",
+                  })
+                }
+                className="px-8 py-4 bg-white/5 border border-white/10 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+              >
                 Découvrir mes services
               </a>
             </div>
           </div>
         </div>
       </div>
-      
+
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-gray-500">
         <div className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center p-1">
-            <div className="w-1 h-2 bg-aurad-400 rounded-full"></div>
+          <div className="w-1 h-2 bg-aurad-400 rounded-full"></div>
         </div>
       </div>
     </section>

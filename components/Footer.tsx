@@ -1,6 +1,7 @@
-import React from 'react';
-import { Logo } from './Logo';
-import { Linkedin, Mail, MessageCircle } from 'lucide-react';
+import React from "react";
+import { Logo } from "./Logo";
+import { Linkedin, Mail, MessageCircle } from "lucide-react";
+import { pushEvent } from "@/lib/gtm";
 
 export const Footer: React.FC = () => {
   return (
@@ -15,21 +16,60 @@ export const Footer: React.FC = () => {
           </div>
 
           <div className="flex gap-6">
-            <a href="mailto:dali.bensalem@auradsystem.com" aria-label="Envoyer un email" className="text-gray-400 hover:text-aurad-400 transition-colors">
-                <Mail size={24} />
+            <a
+              href="mailto:dali.bensalem@auradsystem.com"
+              aria-label="Envoyer un email"
+              onClick={() =>
+                pushEvent({
+                  event: "contact_click",
+                  contact_method: "email",
+                  contact_location: "footer",
+                })
+              }
+              className="text-gray-400 hover:text-aurad-400 transition-colors"
+            >
+              <Mail size={24} />
             </a>
-            <a href="https://wa.me/33685189260" target="_blank" rel="noopener noreferrer" aria-label="Contacter sur WhatsApp" className="text-gray-400 hover:text-green-400 transition-colors">
-                <MessageCircle size={24} />
+            <a
+              href="https://wa.me/33685189260"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Contacter sur WhatsApp"
+              onClick={() =>
+                pushEvent({
+                  event: "contact_click",
+                  contact_method: "whatsapp",
+                  contact_location: "footer",
+                })
+              }
+              className="text-gray-400 hover:text-green-400 transition-colors"
+            >
+              <MessageCircle size={24} />
             </a>
-            <a href="https://www.linkedin.com/in/dalibensalem" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn" className="text-gray-400 hover:text-aurad-400 transition-colors">
-                <Linkedin size={24} />
+            <a
+              href="https://www.linkedin.com/in/dalibensalem"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Profil LinkedIn"
+              onClick={() =>
+                pushEvent({
+                  event: "contact_click",
+                  contact_method: "linkedin",
+                  contact_location: "footer",
+                })
+              }
+              className="text-gray-400 hover:text-aurad-400 transition-colors"
+            >
+              <Linkedin size={24} />
             </a>
           </div>
         </div>
 
         <div className="border-t border-white/5 pt-8 text-center text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center">
-            <p>© {new Date().getFullYear()} Aurad System. Tous droits réservés.</p>
-            <p>Fondé en Juillet 2024 - Indépendant</p>
+          <p>
+            © {new Date().getFullYear()} Aurad System. Tous droits réservés.
+          </p>
+          <p>Fondé en Juillet 2024 - Indépendant</p>
         </div>
       </div>
     </footer>
