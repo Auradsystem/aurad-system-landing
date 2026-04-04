@@ -7,7 +7,7 @@ declare global {
 type GTMEvent =
   | {
       event: "generate_lead";
-      lead_source: "digital" | "btp";
+      lead_source: "automatiser" | "construire" | "piloter";
       timeline: string;
       budget: string;
     }
@@ -15,12 +15,12 @@ type GTMEvent =
       event: "form_step";
       step_number: number;
       step_name: string;
-      domain?: "digital" | "btp" | null;
+      domain?: "automatiser" | "construire" | "piloter" | null;
     }
   | {
       event: "cta_click";
       cta_text: string;
-      cta_location: "hero" | "methodology" | "nav" | "contact";
+      cta_location: "hero" | "services" | "nav" | "contact" | "page";
     }
   | {
       event: "contact_click";
@@ -28,7 +28,16 @@ type GTMEvent =
       contact_location: "contact" | "footer";
     }
   | { event: "faq_interaction"; faq_question: string }
-  | { event: "scenario_select"; scenario_name: "amo" | "ao" | "moe" };
+  | {
+      event: "page_view";
+      page_path: string;
+      page_title: string;
+    }
+  | {
+      event: "filter_click";
+      filter_name: string;
+      filter_location: string;
+    };
 
 const STEP_NAMES = [
   "domain_selection",

@@ -1,11 +1,25 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Navbar } from "./Navbar";
+import { pushEvent } from "@/lib/gtm";
 
 const Footer = React.lazy(() =>
   import("./Footer").then((m) => ({ default: m.Footer })),
 );
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+
+  // Track SPA page views in GTM/GA4
+  useEffect(() => {
+    pushEvent({
+      event: "page_view",
+      page_path: location.pathname,
+      page_title: document.title,
+    });
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
     <div className="min-h-screen bg-aurad-950 text-white selection:bg-aurad-500 selection:text-white">
       <a
