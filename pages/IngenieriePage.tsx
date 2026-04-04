@@ -130,6 +130,7 @@ export default function IngenieriePage() {
 
       <CTASection
         title="Un projet technique a lancer ?"
+        buttonHref="/?domain=piloter#contact"
         subtitle="Echangeons sur votre projet. Audit de besoins offert pour les projets en Ile-de-France."
       />
     </>

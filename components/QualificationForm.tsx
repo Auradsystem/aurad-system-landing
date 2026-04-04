@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
-  Smartphone,
+  Bot,
+  Code2,
   Building2,
   ArrowRight,
   ArrowLeft,
@@ -11,7 +12,7 @@ import {
 } from "lucide-react";
 import { pushEvent, STEP_NAMES } from "@/lib/gtm";
 
-type Domain = "digital" | "btp" | null;
+type Domain = "automatiser" | "construire" | "piloter" | null;
 type Timeline = "urgent" | "court" | "moyen" | "exploration" | null;
 type Budget = "<5k" | "5-15k" | "15-50k" | ">50k" | "tbd" | null;
 
@@ -44,10 +45,19 @@ const WEBHOOK_URL =
 const TOTAL_STEPS = 5;
 
 const PLACEHOLDERS: Record<string, string> = {
-  digital:
-    "Ex : Nous perdons du temps sur nos devis et rapports, nous cherchons à automatiser le suivi de chantier...",
-  btp: "Ex : Nous lançons un projet de vidéosurveillance sur 3 sites, nous avons besoin d'un AMO pour la sécurité incendie...",
+  automatiser:
+    "Ex : Nos équipes passent 2h/jour à qualifier des demandes manuellement, on cherche à automatiser avec un agent IA...",
+  construire:
+    "Ex : On gère notre suivi sur Excel et on perd des données, on a besoin d'un outil métier sur-mesure...",
+  piloter:
+    "Ex : Nous lançons un projet de vidéoprotection sur 3 sites, nous avons besoin d'un AMO pour coordonner les lots techniques...",
   default: "Décrivez votre projet ou votre problématique en quelques lignes...",
+};
+
+const DOMAIN_LABELS: Record<string, string> = {
+  automatiser: "Agent IA",
+  construire: "Dev sur-mesure",
+  piloter: "Ingénierie",
 };
 
 export const QualificationForm: React.FC = () => {
@@ -57,6 +67,25 @@ export const QualificationForm: React.FC = () => {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+
+  // Pre-fill domain from URL param (e.g. /#contact?domain=automatiser)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const urlDomain = params.get("domain") as Domain;
+    if (
+      urlDomain &&
+      ["automatiser", "construire", "piloter"].includes(urlDomain)
+    ) {
+      setData((d) => ({ ...d, domain: urlDomain }));
+      setStep(1);
+      pushEvent({
+        event: "form_step",
+        step_number: 1,
+        step_name: STEP_NAMES[1],
+        domain: urlDomain,
+      });
+    }
+  }, []);
 
   const progress = ((step + 1) / TOTAL_STEPS) * 100;
 
@@ -132,29 +161,33 @@ export const QualificationForm: React.FC = () => {
     }
   };
 
-  // --- Step renderers ---
-
   const renderStep0 = () => (
     <div className="form-step-content">
       <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
         Quel est votre besoin ?
       </h3>
       <p className="text-gray-400 mb-8">
-        Sélectionnez le domaine qui correspond à votre projet.
+        Sélectionnez ce qui correspond le mieux à votre situation.
       </p>
-      <div className="grid sm:grid-cols-2 gap-4">
+      <div className="grid sm:grid-cols-3 gap-4">
         {[
           {
-            value: "digital" as const,
-            icon: <Smartphone className="w-8 h-8" />,
-            label: "Application digitale",
-            desc: "Automatisation, outils métier, plateforme sur-mesure",
+            value: "automatiser" as const,
+            icon: <Bot className="w-8 h-8" />,
+            label: "Automatiser",
+            desc: "Vos équipes perdent du temps sur des tâches répétitives",
           },
           {
-            value: "btp" as const,
+            value: "construire" as const,
+            icon: <Code2 className="w-8 h-8" />,
+            label: "Construire",
+            desc: "Vous avez besoin d'un outil métier sur-mesure",
+          },
+          {
+            value: "piloter" as const,
             icon: <Building2 className="w-8 h-8" />,
-            label: "Ingénierie technique BTP",
-            desc: "AMO, MOE, sûreté, sécurité incendie, CEE",
+            label: "Piloter",
+            desc: "Vous lancez un projet technique avec des lots spéciaux",
           },
         ].map((opt) => (
           <button
@@ -190,8 +223,8 @@ export const QualificationForm: React.FC = () => {
         Décrivez votre situation
       </h3>
       <p className="text-gray-400 mb-8">
-        Quelques lignes suffisent. Plus vous êtes précis, mieux nous pourrons
-        vous aider.
+        Quelques lignes suffisent. Plus vous êtes précis, mieux je pourrai vous
+        aider.
       </p>
       <textarea
         value={data.problem}
@@ -289,7 +322,7 @@ export const QualificationForm: React.FC = () => {
         Vos coordonnées
       </h3>
       <p className="text-gray-400 mb-8">
-        Pour que nous puissions vous recontacter rapidement.
+        Pour que je puisse vous recontacter rapidement.
       </p>
       <div className="space-y-4">
         <div>
@@ -370,7 +403,7 @@ export const QualificationForm: React.FC = () => {
       </div>
       <div className="mt-6 flex items-center justify-center gap-2 text-xs text-gray-500 bg-white/[0.02] p-3 rounded-lg border border-white/5">
         <Lock className="w-3.5 h-3.5" />
-        <p>Vos données sont strictement confidentielles. Promis, zéro spam.</p>
+        <p>Vos données sont strictement confidentielles. Zéro spam.</p>
       </div>
       {error && (
         <p className="mt-4 text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-3">
@@ -393,7 +426,7 @@ export const QualificationForm: React.FC = () => {
         <span className="text-white font-medium">
           {data.name.split(" ")[0]}
         </span>
-        . Nous analysons votre besoin et revenons vers vous sous 24h.
+        . J'analyse votre besoin et reviens vers vous sous 24h.
       </p>
       <div className="glass-card rounded-xl p-6 text-left max-w-sm mx-auto">
         <h4 className="text-sm font-medium text-gray-400 mb-3 uppercase tracking-wider">
@@ -401,9 +434,9 @@ export const QualificationForm: React.FC = () => {
         </h4>
         <dl className="space-y-2 text-sm">
           <div className="flex justify-between">
-            <dt className="text-gray-500">Domaine</dt>
+            <dt className="text-gray-500">Besoin</dt>
             <dd className="text-white font-medium">
-              {data.domain === "digital" ? "Digital" : "BTP"}
+              {DOMAIN_LABELS[data.domain || ""] || data.domain}
             </dd>
           </div>
           <div className="flex justify-between">
@@ -449,7 +482,6 @@ export const QualificationForm: React.FC = () => {
   return (
     <div className="glass-card rounded-2xl p-1 max-w-2xl mx-auto">
       <div className="bg-slate-950/95 md:bg-slate-950/80 md:backdrop-blur-xl rounded-xl overflow-hidden">
-        {/* Progress bar */}
         {!submitted && (
           <div className="h-1 bg-white/5">
             <div
@@ -459,7 +491,6 @@ export const QualificationForm: React.FC = () => {
           </div>
         )}
 
-        {/* Step indicator */}
         {!submitted && (
           <div className="flex items-center justify-between px-6 pt-5 pb-0">
             <span className="text-xs text-gray-500 font-medium">
@@ -478,7 +509,6 @@ export const QualificationForm: React.FC = () => {
           </div>
         )}
 
-        {/* Form content */}
         <div className="px-6 py-8 relative overflow-hidden">
           <div
             key={step}
@@ -488,7 +518,6 @@ export const QualificationForm: React.FC = () => {
           </div>
         </div>
 
-        {/* Navigation */}
         {!submitted && (
           <div className="flex items-center justify-between px-6 pb-6">
             {step > 0 ? (

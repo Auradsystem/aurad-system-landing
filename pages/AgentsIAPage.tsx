@@ -159,6 +159,7 @@ export default function AgentsIAPage() {
 
       <CTASection
         title="Un process a automatiser ?"
+        buttonHref="/?domain=automatiser#contact"
         subtitle="On identifie ensemble en 30 minutes ce qu'un agent IA peut prendre en charge."
       />
     </>

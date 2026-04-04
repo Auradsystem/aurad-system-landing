@@ -75,6 +75,7 @@ export default function DeveloppementPage() {
 
       <CTASection
         title="Un outil metier a construire ?"
+        buttonHref="/?domain=construire#contact"
         subtitle="On definit ensemble le perimetre. Prototype en 2 semaines, deploiement en 4-8."
       />
     </>
