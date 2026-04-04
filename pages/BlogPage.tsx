@@ -3,30 +3,20 @@ import { Link } from "react-router-dom";
 import { FileText, ArrowRight } from "lucide-react";
 import { CTASection } from "../components/shared/CTASection";
 
-const publishedSlugs = new Set(["ia-generique-secteurs-reglementes"]);
+const publishedSlugs = new Set([
+  "agents-ia-entreprise",
+  "automatiser-reponse-appels-offres-ia",
+  "rag-metier-documentation-technique",
+  "ia-btp-2026",
+  "ia-generique-secteurs-reglementes",
+]);
 
 const articles = [
   {
-    slug: "agents-ia-entreprise",
-    title: "Agents IA en entreprise : au-dela du chatbot",
+    slug: "ia-generique-secteurs-reglementes",
+    title: "Pourquoi l'IA generique echoue dans les secteurs reglementes",
     excerpt:
-      "Un agent IA n'est pas un chatbot. C'est un process metier automatise qui comprend vos donnees, vos regles, et agit en autonomie.",
-    date: "2026-04-04",
-    category: "IA appliquee",
-  },
-  {
-    slug: "automatiser-reponse-appels-offres-ia",
-    title: "Automatiser la reponse aux appels d'offres avec l'IA",
-    excerpt:
-      "60% du score final en marche public vient de la valeur technique. Comment l'IA peut structurer et renforcer vos memoires techniques.",
-    date: "2026-04-04",
-    category: "BTP",
-  },
-  {
-    slug: "rag-metier-documentation-technique",
-    title: "RAG metier : rendre votre documentation technique interrogeable",
-    excerpt:
-      "10 000 pages de docs inaccessibles ? Un RAG multimodal retrouve l'info en secondes avec les sources.",
+      "Un wrapper ChatGPT ne connait pas vos normes, vos process, vos contraintes. Les secteurs reglementes ont besoin d'agents sur-mesure.",
     date: "2026-04-04",
     category: "IA appliquee",
   },
@@ -35,16 +25,31 @@ const articles = [
     title: "IA dans le BTP : ce qui marche vraiment en 2026",
     excerpt:
       "Au-dela du buzz, quels cas d'usage IA generent un ROI mesurable dans la construction et les travaux publics.",
-    date: "2026-04-04",
+    date: "2026-03-24",
     category: "BTP",
   },
   {
-    slug: "ia-generique-secteurs-reglementes",
-    title:
-      "Pourquoi les solutions IA generiques echouent dans les secteurs reglementes",
+    slug: "rag-metier-documentation-technique",
+    title: "RAG metier : rendre votre documentation technique interrogeable",
     excerpt:
-      "Un wrapper ChatGPT ne connait pas vos normes, vos process, vos contraintes. Les secteurs reglementes ont besoin d'agents sur-mesure.",
-    date: "2026-04-04",
+      "10 000 pages de docs inaccessibles ? Un RAG multimodal retrouve l'info en secondes avec les sources.",
+    date: "2026-03-10",
+    category: "IA appliquee",
+  },
+  {
+    slug: "automatiser-reponse-appels-offres-ia",
+    title: "Automatiser la reponse aux appels d'offres avec l'IA",
+    excerpt:
+      "60% du score final en marche public vient de la valeur technique. Comment l'IA peut structurer et renforcer vos memoires techniques.",
+    date: "2026-02-24",
+    category: "BTP",
+  },
+  {
+    slug: "agents-ia-entreprise",
+    title: "Agents IA en entreprise : au-dela du chatbot",
+    excerpt:
+      "Un agent IA n'est pas un chatbot. C'est un process metier automatise qui comprend vos donnees, vos regles, et agit en autonomie.",
+    date: "2026-02-10",
     category: "IA appliquee",
   },
 ];

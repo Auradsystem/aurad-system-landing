@@ -37,6 +37,30 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://auradsystem.com/blog/agents-ia-entreprise</loc>
+    <lastmod>2026-02-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://auradsystem.com/blog/automatiser-reponse-appels-offres-ia</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://auradsystem.com/blog/rag-metier-documentation-technique</loc>
+    <lastmod>2026-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://auradsystem.com/blog/ia-btp-2026</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://auradsystem.com/blog/ia-generique-secteurs-reglementes</loc>
     <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
