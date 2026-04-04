@@ -9,6 +9,9 @@ const DeveloppementPage = lazy(() => import("./pages/DeveloppementPage"));
 const IngenieriePage = lazy(() => import("./pages/IngenieriePage"));
 const RealisationsPage = lazy(() => import("./pages/RealisationsPage"));
 const BlogPage = lazy(() => import("./pages/BlogPage"));
+const ArticleIAGeneriqueSecteurs = lazy(
+  () => import("./pages/blog/ia-generique-secteurs-reglementes"),
+);
 
 function App() {
   return (
@@ -22,6 +25,10 @@ function App() {
             <Route path="/ingenierie-technique" element={<IngenieriePage />} />
             <Route path="/realisations" element={<RealisationsPage />} />
             <Route path="/blog" element={<BlogPage />} />
+            <Route
+              path="/blog/ia-generique-secteurs-reglementes"
+              element={<ArticleIAGeneriqueSecteurs />}
+            />
           </Routes>
         </Suspense>
       </Layout>

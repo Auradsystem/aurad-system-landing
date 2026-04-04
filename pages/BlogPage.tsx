@@ -1,6 +1,9 @@
 import React from "react";
-import { FileText } from "lucide-react";
+import { Link } from "react-router-dom";
+import { FileText, ArrowRight } from "lucide-react";
 import { CTASection } from "../components/shared/CTASection";
+
+const publishedSlugs = new Set(["ia-generique-secteurs-reglementes"]);
 
 const articles = [
   {
@@ -76,10 +79,20 @@ export default function BlogPage() {
               </div>
               <h2 className="text-xl font-bold text-white mb-2">{a.title}</h2>
               <p className="text-gray-400 leading-relaxed">{a.excerpt}</p>
-              <span className="inline-flex items-center gap-1 mt-4 text-aurad-400 text-sm font-medium">
-                <FileText className="w-4 h-4" />
-                Article a venir
-              </span>
+              {publishedSlugs.has(a.slug) ? (
+                <Link
+                  to={`/blog/${a.slug}`}
+                  className="inline-flex items-center gap-1 mt-4 text-aurad-400 hover:text-aurad-300 text-sm font-medium transition-colors"
+                >
+                  Lire l'article
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              ) : (
+                <span className="inline-flex items-center gap-1 mt-4 text-gray-500 text-sm font-medium">
+                  <FileText className="w-4 h-4" />
+                  Article a venir
+                </span>
+              )}
             </article>
           ))}
         </div>
