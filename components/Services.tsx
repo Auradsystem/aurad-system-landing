@@ -1,165 +1,111 @@
-import React from 'react';
-import { Shield, Flame, Building2, Layers, Smartphone, Database, Zap, FileText, BarChart2, Award } from 'lucide-react';
+import React from "react";
+import { Bot, Code2, Building2, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const services = [
   {
-    category: "Développement d'applications",
-    icon: <Smartphone className="w-8 h-8" />,
-    description: "Vous perdez du temps sur des tâches répétitives et manquez de visibilité sur vos projets ? Des outils conçus pour le BTP, pas des logiciels génériques.",
+    title: "Automatiser",
+    icon: <Bot className="w-8 h-8" />,
+    question:
+      "Vos équipes passent du temps sur des tâches que l'IA fait mieux qu'elles ?",
     items: [
-      {
-        title: "Automatisation documentaire",
-        desc: (
-          <ul className="space-y-1 mt-1 marker:text-aurad-500 list-disc list-outside ml-4">
-            <li>Vous perdez des heures à copier-coller des données entre vos documents ?</li>
-            <li>Vos documents types se remplissent automatiquement.</li>
-            <li><span className="text-white">Résultat :</span> Mémoires techniques, CCTP et rapports générés en quelques clics.</li>
-          </ul>
-        ),
-        icon: <FileText className="w-5 h-5" />
-      },
-      {
-        title: "Suivi chantier & exploitation",
-        desc: (
-          <ul className="space-y-1 mt-1 marker:text-aurad-500 list-disc list-outside ml-4">
-            <li>Suivi sur Excel compliqué ? Réserves perdues par email ?</li>
-            <li>Déploiement d'applications dédiées au pointage et à la levée des réserves.</li>
-            <li><span className="text-white">Résultat :</span> Vos indicateurs budgétaires accessibles en temps réel.</li>
-          </ul>
-        ),
-        icon: <BarChart2 className="w-5 h-5" />
-      },
-      {
-        title: "Plateformes métier sur-mesure",
-        desc: (
-          <ul className="space-y-1 mt-1 marker:text-aurad-500 list-disc list-outside ml-4">
-            <li>Vos équipes jonglent entre trop d'outils cloisonnés ?</li>
-            <li>Création : CRM BTP, simulateurs de chiffrage, GMAO légère.</li>
-            <li><span className="text-white">Résultat :</span> Une plateforme unique pour centraliser votre activité.</li>
-          </ul>
-        ),
-        icon: <Database className="w-5 h-5" />
-      }
-    ]
+      "Agents conversationnels qui comprennent vos règles métier",
+      "RAG sur votre documentation technique — l'info en secondes",
+      "Génération automatique de documents réglementaires",
+      "Qualification et traitement des demandes entrantes",
+    ],
+    link: "/agents-ia",
+    linkText: "Découvrir les agents IA",
   },
   {
-    category: "Ingénierie technique BTP",
-    icon: <Building2 className="w-8 h-8" />,
-    description: "Assistance à maîtrise d'ouvrage et maîtrise d'œuvre pour vos projets techniques.",
+    title: "Construire",
+    icon: <Code2 className="w-8 h-8" />,
+    question:
+      "Vous avez besoin d'un outil métier qui n'existe pas sur le marché ?",
     items: [
-      {
-        title: "Sûreté & Sécurité",
-        desc: (
-          <ul className="space-y-1 mt-1 marker:text-aurad-500 list-disc list-outside ml-4">
-            <li>Vidéosurveillance, caméras thermiques, contrôle d'accès.</li>
-            <li>Rédaction méticuleuse des CCTP et analyse des offres.</li>
-            <li>Pilotage chantier pour une <span className="text-white">réception 100% conforme</span>.</li>
-          </ul>
-        ),
-        icon: <Shield className="w-5 h-5" />
-      },
-      {
-        title: "Sécurité incendie",
-        desc: (
-          <ul className="space-y-1 mt-1 marker:text-aurad-500 list-disc list-outside ml-4">
-            <li>Détection incendie, sprinklage, désenfumage.</li>
-            <li>De l'audit réglementaire (APSAD, ERP) à la mise en service.</li>
-            <li><span className="text-white">Sécurité garantie</span> dès la première réception.</li>
-          </ul>
-        ),
-        icon: <Flame className="w-5 h-5" />
-      },
-      {
-        title: "Systèmes techniques",
-        desc: (
-          <ul className="space-y-1 mt-1 marker:text-aurad-500 list-disc list-outside ml-4">
-            <li>GTC/GTB, électricité CFO/CFA.</li>
-            <li>Coordination pointue des différents lots.</li>
-            <li>Gestion des interfaces pour une <span className="text-white">cohérence technique totale</span>.</li>
-          </ul>
-        ),
-        icon: <Layers className="w-5 h-5" />
-      },
-      {
-        title: "Valorisation CEE",
-        desc: (
-          <ul className="space-y-1 mt-1 marker:text-aurad-500 list-disc list-outside ml-4">
-            <li>Montage de dossiers CEE (GTB, éclairage, CVC).</li>
-            <li>Accès à un vaste réseau de partenaires et délégataires.</li>
-            <li><span className="text-white">Maximisation du financement</span> de vos travaux d'économie d'énergie.</li>
-          </ul>
-        ),
-        icon: <Zap className="w-5 h-5" />
-      },
-      {
-        title: "Certifications & Risk Management",
-        desc: (
-          <ul className="space-y-1 mt-1 marker:text-aurad-500 list-disc list-outside ml-4">
-            <li>Accompagnement à la certification APSAD (I7 installation, F7 maintenance).</li>
-            <li>Un vrai atout pour <span className="text-white">remporter vos appels d'offres publics</span>.</li>
-            <li>Démarches ISO 31000 pour sécuriser votre approche risque globale.</li>
-          </ul>
-        ),
-        icon: <Award className="w-5 h-5" />
-      }
-    ]
-  }
+      "GMAO, plateformes de suivi, dashboards opérationnels",
+      "Prévision cash-flow et scoring de conformité",
+      "Automatisation documentaire — plus de copier-coller",
+      "Applications web sur-mesure pour votre secteur",
+    ],
+    link: "/developpement",
+    linkText: "Voir les applications",
+  },
+  {
+    title: "Piloter",
+    icon: <Building2 className="w-8 h-8" />,
+    question: "Vous lancez un projet technique avec des lots spéciaux ?",
+    items: [
+      "AMO/MOE : sécurité, incendie, GTC, contrôle d'accès",
+      "Rédaction de CCTP et analyse des offres",
+      "Pilotage chantier et réception conforme",
+      "Aide à la réponse aux appels d'offres",
+    ],
+    link: "/ingenierie-technique",
+    linkText: "En savoir plus",
+  },
 ];
 
 export const Services: React.FC = () => {
   return (
     <section id="services" className="py-24 relative bg-aurad-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-            Expertise <span className="text-aurad-400">technique</span>
+            Ce que je fais <span className="text-aurad-400">concrètement</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Deux piliers d'expertise pour transformer votre activité.
+            Trois façons d'avancer, selon votre besoin.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid lg:grid-cols-3 gap-8">
           {services.map((service, idx) => (
-            <div key={idx} className="glass-card rounded-2xl p-1 relative overflow-hidden group">
+            <div
+              key={idx}
+              className="glass-card rounded-2xl p-1 relative overflow-hidden group"
+            >
               <div className="absolute inset-0 bg-gradient-to-br from-aurad-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="bg-slate-950/95 md:bg-slate-950/80 md:backdrop-blur-xl rounded-xl p-8 h-full relative z-10">
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="w-16 h-16 rounded-xl bg-aurad-500/10 flex items-center justify-center text-aurad-400 border border-aurad-500/20 group-hover:scale-110 transition-transform duration-300">
+
+              <div className="bg-slate-950/95 md:bg-slate-950/80 md:backdrop-blur-xl rounded-xl p-8 h-full relative z-10 flex flex-col">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-14 h-14 rounded-xl bg-aurad-500/10 flex items-center justify-center text-aurad-400 border border-aurad-500/20 group-hover:scale-110 transition-transform duration-300">
                     {service.icon}
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-white">{service.category}</h3>
-                    <p className="text-sm text-gray-400 mt-1">{service.description}</p>
-                  </div>
+                  <h3 className="text-2xl font-bold text-white">
+                    {service.title}
+                  </h3>
                 </div>
 
-                <div className="space-y-6">
-                  {service.items.map((item, itemIdx) => (
-                    <div key={itemIdx} className="flex gap-4 p-4 rounded-lg hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
-                      <div className="mt-1 text-aurad-500">
-                        {item.icon}
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-gray-200">{item.title}</h4>
-                        <div className="text-sm text-gray-400 leading-relaxed mt-2 space-y-2">
-                          {typeof item.desc === 'string' ? (
-                            <p>{item.desc}</p>
-                          ) : (
-                            item.desc
-                          )}
-                        </div>
-                      </div>
-                    </div>
+                <p className="text-gray-300 text-sm font-medium mb-6">
+                  {service.question}
+                </p>
+
+                <ul className="space-y-3 mb-8 flex-grow">
+                  {service.items.map((item, i) => (
+                    <li
+                      key={i}
+                      className="flex gap-3 text-sm text-gray-400 leading-relaxed"
+                    >
+                      <span className="text-aurad-500 mt-1 flex-shrink-0">
+                        •
+                      </span>
+                      {item}
+                    </li>
                   ))}
-                </div>
+                </ul>
+
+                <Link
+                  to={service.link}
+                  className="inline-flex items-center gap-2 text-aurad-400 text-sm font-semibold hover:text-aurad-300 transition-colors group/link"
+                >
+                  {service.linkText}
+                  <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                </Link>
               </div>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

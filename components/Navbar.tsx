@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import { Logo } from "./Logo";
 import { pushEvent } from "@/lib/gtm";
 
 const navItems = [
-  { label: "Services", href: "#services" },
-  { label: "Méthodologie", href: "#methodology" },
-  { label: "Approche", href: "#approach" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Agents IA", href: "/agents-ia" },
+  { label: "Développement", href: "/developpement" },
+  { label: "Ingénierie", href: "/ingenierie-technique" },
+  { label: "Réalisations", href: "/realisations" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export const Navbar: React.FC = () => {
@@ -37,30 +39,27 @@ export const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo Section */}
-          <div
-            className="flex-shrink-0 flex items-center gap-3 cursor-pointer"
-            onClick={() => window.scrollTo(0, 0)}
-          >
+          <Link to="/" className="flex-shrink-0 flex items-center gap-3">
             <Logo className="w-10 h-10" />
             <span className="text-2xl font-bold tracking-wider text-white">
               AURAD <span className="text-aurad-400">SYSTEM</span>
             </span>
-          </div>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            <div className="ml-10 flex items-baseline space-x-6">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.label}
-                  href={item.href}
+                  to={item.href}
                   className="text-gray-300 hover:text-aurad-400 transition-colors px-3 py-2 rounded-md text-sm font-medium uppercase tracking-wide"
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
-              <a
-                href="#contact"
+              <Link
+                to="/#contact"
                 onClick={() =>
                   pushEvent({
                     event: "cta_click",
@@ -71,7 +70,7 @@ export const Navbar: React.FC = () => {
                 className="bg-aurad-400/10 border border-aurad-400 text-aurad-400 hover:bg-aurad-400 hover:text-aurad-950 transition-colors px-6 py-2 rounded-full text-sm font-semibold neon-border"
               >
                 Contact
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -104,17 +103,17 @@ export const Navbar: React.FC = () => {
         >
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
-                href={item.href}
+                to={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-gray-300 hover:text-aurad-400 block px-3 py-2 rounded-md text-base font-medium"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#contact"
+            <Link
+              to="/#contact"
               onClick={() => {
                 setIsMobileMenuOpen(false);
                 pushEvent({
@@ -126,7 +125,7 @@ export const Navbar: React.FC = () => {
               className="block w-full text-center mt-4 bg-aurad-600 text-white px-3 py-3 rounded-md font-bold"
             >
               Me Contacter
-            </a>
+            </Link>
           </div>
         </div>
       )}

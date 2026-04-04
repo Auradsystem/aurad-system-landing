@@ -79,16 +79,16 @@ export const Hero: React.FC = () => {
             </div>
 
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
-              Digitalisez le BTP <br />
+              Je comprends votre métier. <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-aurad-300 to-blue-600 neon-text">
-                & sécurisez vos projets
+                Je code la solution.
               </span>
             </h1>
 
             <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              Ingénierie technique (AMO/MOE) et développement sur-mesure pour
-              les PME/ETI d'Île-de-France. Gagnez en rentabilité avec un
-              interlocuteur unique qui parle votre métier.
+              Consulting IA et développement sur-mesure pour les entreprises qui
+              veulent automatiser sans perdre le contrôle. Un interlocuteur
+              unique, du diagnostic au déploiement.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -109,17 +109,17 @@ export const Hero: React.FC = () => {
                 </span>
               </a>
               <a
-                href="#services"
+                href="/realisations"
                 onClick={() =>
                   pushEvent({
                     event: "cta_click",
-                    cta_text: "Decouvrir mes services",
+                    cta_text: "Voir les realisations",
                     cta_location: "hero",
                   })
                 }
                 className="px-8 py-4 bg-white/5 border border-white/10 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
               >
-                Découvrir mes services
+                Voir les réalisations
               </a>
             </div>
           </div>
