@@ -4,41 +4,44 @@ import { pushEvent } from "@/lib/gtm";
 
 const faqs = [
   {
-    question: "Qu'est-ce qu'un AMO en BTP et pourquoi en avoir besoin ?",
+    question: "C'est quoi un agent IA concrètement ?",
     answer:
-      "L'Assistant à Maîtrise d'Ouvrage (AMO) accompagne le maître d'ouvrage dans la définition, le pilotage et la réception de son projet de construction ou rénovation. Il rédige les CCTP, analyse les offres des entreprises, coordonne les lots techniques et vérifie la conformité. Sans AMO sur les lots spéciaux (sécurité, incendie, GTC), les surcoûts moyens sont de 15-25% avec 2-6 semaines de retard.",
+      "Un agent IA, c'est un programme qui comprend vos données, vos règles métier, et qui agit en autonomie sur des tâches répétitives. Ce n'est pas un chatbot générique. C'est un outil entraîné sur votre contexte : il qualifie des demandes, génère des documents, retrouve de l'information dans vos bases. Il fait en secondes ce qui prend des heures à vos équipes.",
   },
   {
-    question: "Quels lots techniques couvrez-vous ?",
+    question: "En combien de temps un agent IA est opérationnel ?",
     answer:
-      "Vidéosurveillance, caméras thermiques, contrôle d'accès, interphonie, sécurité incendie (détection, sprinklage, désenfumage), GTC/GTB (gestion technique centralisée), et électricité CFO/CFA. L'intervention couvre toutes les phases : audit de besoins, rédaction de CCTP, analyse des offres, pilotage chantier et réception.",
+      "Comptez 2 semaines pour un premier prototype fonctionnel testé avec vos propres données. Le déploiement complet (intégration dans vos outils, formation des équipes) prend 4 à 8 semaines selon la complexité. Vous voyez des résultats concrets dès le prototype, pas après 6 mois de spécifications.",
   },
   {
-    question:
-      "Comment aidez-vous les entreprises BTP à répondre aux appels d'offres ?",
+    question: "Quelle différence avec un chatbot ou ChatGPT ?",
     answer:
-      "En 4 étapes : analyse du DCE (identification des risques et opportunités), stratégie de réponse (positionnement prix et différenciation technique), rédaction du mémoire technique structuré, et optimisation du chiffrage. Résultat : +10-20% de taux de transformation sur les réponses.",
+      "ChatGPT est généraliste. Il ne connaît pas vos règles métier, vos normes, vos process internes. Un agent sur-mesure est codé pour votre contexte : il accède à vos données, respecte vos contraintes réglementaires, et produit des résultats exploitables directement. C'est la différence entre un stagiaire de passage et un expert de votre secteur.",
+  },
+  {
+    question: "Vous travaillez avec quels secteurs ?",
+    answer:
+      "BTP, énergie, industrie, services. Le secteur change, la méthode reste : comprendre le métier avant de coder. Mon expertise terrain vient du BTP (sécurité incendie, lots techniques, appels d'offres), mais les agents IA et les applications métier que je construis s'adaptent à tout secteur avec des process répétitifs ou de la documentation technique.",
+  },
+  {
+    question: "Pourquoi pas une agence IA classique ?",
+    answer:
+      "La plupart des agences IA connectent des outils no-code (n8n, Make) ou configurent des wrappers autour de ChatGPT. Ici, c'est du vrai code : RAG custom, agents autonomes, intégrations API sur-mesure. Et surtout, un interlocuteur unique qui comprend votre métier, pas un commercial qui passe le relais à un développeur junior.",
+  },
+  {
+    question: "C'est quoi un AMO et pourquoi en avoir besoin ?",
+    answer:
+      "L'Assistant à Maîtrise d'Ouvrage accompagne le maître d'ouvrage dans le pilotage de son projet technique : rédaction des cahiers des charges, analyse des offres, coordination des lots, réception. Sans AMO sur les lots spéciaux (sécurité, incendie, GTC), les surcoûts moyens sont de 15-25%.",
   },
   {
     question: "Intervenez-vous uniquement en Île-de-France ?",
     answer:
-      "Principalement en Île-de-France pour les missions nécessitant une présence terrain (pilotage chantier, réceptions). Les missions de conseil pur (aide à la réponse aux appels d'offres, rédaction de CCTP, développement digital) peuvent se faire à distance sur tout le territoire.",
+      "En Île-de-France pour les missions terrain (pilotage chantier, réceptions). Les missions de consulting IA, développement d'applications et conseil technique se font à distance sur tout le territoire.",
   },
   {
-    question: "Quelle différence avec un bureau d'études généraliste ?",
+    question: "Combien ça coûte ?",
     answer:
-      "Intervention directe sans sous-traitance, avec une expertise pointue sur les lots spéciaux. Interlocuteur unique du premier rendez-vous à la réception. Réseau de partenaires architectes pour couvrir l'ensemble de vos besoins. Double compétence BTP + digital permettant de créer des outils métier sur-mesure si nécessaire.",
-  },
-  {
-    question: "Qu'est-ce que la valorisation CEE et comment en bénéficier ?",
-    answer:
-      "Les CEE (Certificats d'Économies d'Énergie) sont des subventions pour financer les travaux d'efficacité énergétique. Nous identifions les opérations éligibles sur vos projets (GTB, éclairage LED, CVC) et montons les dossiers CEE avec notre réseau de partenaires obligés pour maximiser le financement.",
-  },
-  {
-    question:
-      "Qu'est-ce que la certification APSAD et pourquoi se faire certifier ?",
-    answer:
-      "La certification APSAD (I7 pour l'installation, F7 pour la maintenance) atteste de la compétence d'une entreprise en sécurité incendie et sûreté. Elle est souvent exigée dans les marchés publics et les grands comptes privés. Se faire certifier, c'est accéder à de nouveaux marchés, rassurer vos clients sur la qualité de vos prestations, et vous différencier de la concurrence. Je vous accompagne dans la préparation du dossier et la mise en conformité de vos processus.",
+      "Chaque projet est différent. Un agent IA simple (qualification de demandes) démarre autour de 5 000 €. Une application métier complète entre 15 000 et 50 000 €. Une mission AMO/MOE dépend du périmètre et de la durée. Le plus simple : on en parle 30 minutes et je vous donne une fourchette réaliste.",
   },
 ];
 
@@ -54,7 +57,7 @@ export const FAQ: React.FC = () => {
             </span>
           </h2>
           <p className="text-gray-400 text-lg">
-            Les réponses aux questions les plus courantes sur nos services.
+            Les réponses aux questions les plus courantes.
           </p>
         </div>
         <div className="space-y-4">
