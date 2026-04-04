@@ -19,11 +19,13 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <Suspense fallback={null}>
+        <Contact />
+      </Suspense>
       <Services />
       <Suspense fallback={null}>
         <Methodology />
         <About />
-        <Contact />
         <FAQ />
       </Suspense>
     </>
