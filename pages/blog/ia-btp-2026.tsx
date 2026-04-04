@@ -1,11 +1,47 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { SEO } from "../../components/SEO";
 import { CTASection } from "../../components/shared/CTASection";
 
 export default function ArticleIABTP() {
   return (
     <>
+      <SEO
+        title="IA dans le BTP : ce qui marche vraiment en 2026"
+        description="27 % des entreprises du BTP ont fait de l'IA un axe strategique. Mais seulement 32 % estiment avoir atteint leurs objectifs. Voici les cas d'usage a ROI reel."
+        path="/blog/ia-btp-2026"
+        type="article"
+        publishedTime="2026-03-24"
+      />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: "IA dans le BTP : ce qui marche vraiment en 2026",
+            datePublished: "2026-03-24",
+            author: {
+              "@type": "Organization",
+              name: "Aurad System",
+              url: "https://auradsystem.com",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Aurad System",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://auradsystem.com/favicon.svg",
+              },
+            },
+            description:
+              "Au-dela du buzz, quels cas d'usage IA generent un ROI mesurable dans la construction et les travaux publics.",
+            url: "https://auradsystem.com/blog/ia-btp-2026",
+            inLanguage: "fr-FR",
+          })}
+        </script>
+      </Helmet>
       <article className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <Link

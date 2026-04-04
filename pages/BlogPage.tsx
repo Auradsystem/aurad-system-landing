@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FileText, ArrowRight } from "lucide-react";
+import { SEO } from "../components/SEO";
 import { CTASection } from "../components/shared/CTASection";
 
 const publishedSlugs = new Set([
@@ -57,6 +58,11 @@ const articles = [
 export default function BlogPage() {
   return (
     <>
+      <SEO
+        title="Blog — IA appliquee et developpement sur-mesure"
+        description="Articles techniques sur l'IA en entreprise, les agents IA metier, le RAG, l'automatisation et le BTP. Retours d'experience et analyses concretes."
+        path="/blog"
+      />
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6">

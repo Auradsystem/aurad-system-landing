@@ -1,4 +1,5 @@
 import React from "react";
+import { SEO } from "../components/SEO";
 import { Building2, Shield, Flame, Layers, Zap, Award } from "lucide-react";
 import { CTASection } from "../components/shared/CTASection";
 
@@ -61,6 +62,11 @@ const process = [
 export default function IngenieriePage() {
   return (
     <>
+      <SEO
+        title="Ingenierie technique BTP — AMO/MOE lots speciaux"
+        description="AMO et MOE pour lots techniques : surete, securite incendie, GTC/GTB, controle d'acces. De l'audit a la reception, un interlocuteur unique."
+        path="/ingenierie-technique"
+      />
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-aurad-900/50 border border-aurad-500/30 mb-6">

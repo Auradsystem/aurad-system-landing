@@ -1,11 +1,48 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { SEO } from "../../components/SEO";
 import { CTASection } from "../../components/shared/CTASection";
 
 export default function ArticleRAGMetier() {
   return (
     <>
+      <SEO
+        title="RAG metier : rendre votre documentation technique interrogeable"
+        description="10 000 pages de docs inaccessibles ? Un RAG bien construit repond en secondes, avec les sources. Mais 70 % des projets RAG echouent en production."
+        path="/blog/rag-metier-documentation-technique"
+        type="article"
+        publishedTime="2026-03-10"
+      />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline:
+              "RAG metier : rendre votre documentation technique interrogeable",
+            datePublished: "2026-03-10",
+            author: {
+              "@type": "Organization",
+              name: "Aurad System",
+              url: "https://auradsystem.com",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Aurad System",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://auradsystem.com/favicon.svg",
+              },
+            },
+            description:
+              "10 000 pages de docs inaccessibles ? Un RAG multimodal retrouve l'info en secondes avec les sources.",
+            url: "https://auradsystem.com/blog/rag-metier-documentation-technique",
+            inLanguage: "fr-FR",
+          })}
+        </script>
+      </Helmet>
       <article className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <Link

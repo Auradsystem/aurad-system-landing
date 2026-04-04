@@ -1,4 +1,5 @@
 import React from "react";
+import { SEO } from "../components/SEO";
 import {
   Bot,
   Search,
@@ -58,6 +59,11 @@ const steps = [
 export default function AgentsIAPage() {
   return (
     <>
+      <SEO
+        title="Agents IA metier pour PME/ETI"
+        description="Des agents IA entraines sur vos donnees et vos regles metier. Pas un chatbot generique — un outil qui comprend votre secteur et agit en autonomie."
+        path="/agents-ia"
+      />
       {/* Hero */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">

@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from "react";
+import { SEO } from "../components/SEO";
 import { Hero } from "../components/Hero";
 import { Services } from "../components/Services";
 
@@ -18,6 +19,11 @@ const FAQ = lazy(() =>
 export default function HomePage() {
   return (
     <>
+      <SEO
+        title="Aurad System | Consulting IA & Developpement Sur-Mesure pour PME/ETI"
+        description="Consulting IA et developpement sur-mesure pour PME/ETI. Agents IA metier, automatisation de processus, applications web. Un ingenieur qui comprend votre metier et code la solution."
+        path="/"
+      />
       <Hero />
       <Suspense fallback={null}>
         <Contact />

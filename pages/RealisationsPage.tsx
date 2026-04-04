@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { SEO } from "../components/SEO";
 import { Bot, Code2, Building2 } from "lucide-react";
 import { CTASection } from "../components/shared/CTASection";
 
@@ -115,6 +116,11 @@ export default function RealisationsPage() {
 
   return (
     <>
+      <SEO
+        title="Realisations — projets IA et developpement"
+        description="Agents IA metier, applications web sur-mesure, ingenierie technique BTP. Exemples concrets de projets livres pour PME/ETI."
+        path="/realisations"
+      />
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6">

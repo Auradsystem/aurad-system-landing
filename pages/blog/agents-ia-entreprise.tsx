@@ -1,11 +1,47 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { SEO } from "../../components/SEO";
 import { CTASection } from "../../components/shared/CTASection";
 
 export default function ArticleAgentsIA() {
   return (
     <>
+      <SEO
+        title="Agents IA en entreprise : au-dela du chatbot"
+        description="80 % des entreprises qui deploient l'IA generative ne constatent aucun impact. Le probleme n'est pas la techno. C'est la difference entre un chatbot et un agent."
+        path="/blog/agents-ia-entreprise"
+        type="article"
+        publishedTime="2026-02-10"
+      />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: "Agents IA en entreprise : au-dela du chatbot",
+            datePublished: "2026-02-10",
+            author: {
+              "@type": "Organization",
+              name: "Aurad System",
+              url: "https://auradsystem.com",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Aurad System",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://auradsystem.com/favicon.svg",
+              },
+            },
+            description:
+              "Un agent IA n'est pas un chatbot. C'est un process metier automatise qui comprend vos donnees, vos regles, et agit en autonomie.",
+            url: "https://auradsystem.com/blog/agents-ia-entreprise",
+            inLanguage: "fr-FR",
+          })}
+        </script>
+      </Helmet>
       <article className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <Link

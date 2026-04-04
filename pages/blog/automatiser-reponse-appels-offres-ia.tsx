@@ -1,11 +1,47 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { SEO } from "../../components/SEO";
 import { CTASection } from "../../components/shared/CTASection";
 
 export default function ArticleAppelsOffres() {
   return (
     <>
+      <SEO
+        title="Automatiser la reponse aux appels d'offres avec l'IA"
+        description="Un memoire technique complexe prend 10 a 20 heures. Avec un agent IA branche sur vos anciens dossiers, ce temps tombe a 1-2 heures de relecture."
+        path="/blog/automatiser-reponse-appels-offres-ia"
+        type="article"
+        publishedTime="2026-02-24"
+      />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: "Automatiser la reponse aux appels d'offres avec l'IA",
+            datePublished: "2026-02-24",
+            author: {
+              "@type": "Organization",
+              name: "Aurad System",
+              url: "https://auradsystem.com",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Aurad System",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://auradsystem.com/favicon.svg",
+              },
+            },
+            description:
+              "60% du score final en marche public vient de la valeur technique. Comment l'IA peut structurer et renforcer vos memoires techniques.",
+            url: "https://auradsystem.com/blog/automatiser-reponse-appels-offres-ia",
+            inLanguage: "fr-FR",
+          })}
+        </script>
+      </Helmet>
       <article className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <Link

@@ -1,11 +1,48 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { SEO } from "../../components/SEO";
 import { CTASection } from "../../components/shared/CTASection";
 
 export default function ArticleIAGeneriqueSecteurs() {
   return (
     <>
+      <SEO
+        title="Pourquoi l'IA generique echoue dans les secteurs reglementes"
+        description="Les hallucinations de l'IA ont coute 67,4 milliards de dollars aux entreprises en 2024. Dans la sante, la finance ou le BTP, une reponse fausse est un risque reglementaire."
+        path="/blog/ia-generique-secteurs-reglementes"
+        type="article"
+        publishedTime="2026-04-04"
+      />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline:
+              "Pourquoi l'IA generique echoue dans les secteurs reglementes",
+            datePublished: "2026-04-04",
+            author: {
+              "@type": "Organization",
+              name: "Aurad System",
+              url: "https://auradsystem.com",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Aurad System",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://auradsystem.com/favicon.svg",
+              },
+            },
+            description:
+              "Un wrapper ChatGPT ne connait pas vos normes, vos process, vos contraintes. Les secteurs reglementes ont besoin d'agents sur-mesure.",
+            url: "https://auradsystem.com/blog/ia-generique-secteurs-reglementes",
+            inLanguage: "fr-FR",
+          })}
+        </script>
+      </Helmet>
       <article className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <Link
