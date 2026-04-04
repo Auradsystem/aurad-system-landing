@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { pushEvent } from "@/lib/gtm";
 
 export const Hero: React.FC = () => {
@@ -108,8 +109,8 @@ export const Hero: React.FC = () => {
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </a>
-              <a
-                href="/realisations"
+              <Link
+                to="/realisations"
                 onClick={() =>
                   pushEvent({
                     event: "cta_click",
@@ -120,7 +121,7 @@ export const Hero: React.FC = () => {
                 className="px-8 py-4 bg-white/5 border border-white/10 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
               >
                 Voir les réalisations
-              </a>
+              </Link>
             </div>
           </div>
         </div>
