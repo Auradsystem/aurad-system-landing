@@ -1,0 +1,48 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#020617"/>
+
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Glow effect -->
+  <ellipse cx="600" cy="250" rx="400" ry="200" fill="#06b6d4" opacity="0.08"/>
+
+  <!-- Logo "A" circuit -->
+  <g transform="translate(520, 100) scale(2.5)">
+    <path d="M30 80 L50 20 L70 80" stroke="#22d3ee" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M40 50 L60 50" stroke="#22d3ee" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="30" cy="80" r="6" fill="#020617" stroke="#22d3ee" stroke-width="3"/>
+    <circle cx="50" cy="20" r="6" fill="#020617" stroke="#22d3ee" stroke-width="3"/>
+    <circle cx="70" cy="80" r="6" fill="#020617" stroke="#22d3ee" stroke-width="3"/>
+    <path d="M60 50 C 80 50, 80 80, 60 80 L 40 80" stroke="#22d3ee" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+  </g>
+
+  <!-- Company name -->
+  <text x="600" y="400" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="700" fill="white" letter-spacing="8">
+    AURAD <tspan fill="#22d3ee">SYSTEM</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="600" y="460" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="22" fill="#94a3b8" letter-spacing="1">
+    Ingénierie technique BTP (AMO/MOE) &amp; Développement Digital
+  </text>
+
+  <!-- Subtitle -->
+  <text x="600" y="500" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#64748b">
+    Solutions sur-mesure pour PME/ETI en Île-de-France
+  </text>
+
+  <!-- Bottom accent line -->
+  <rect x="450" y="540" width="300" height="2" rx="1" fill="#22d3ee" opacity="0.5"/>
+
+  <!-- Domain -->
+  <text x="600" y="580" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#475569">
+    auradsystem.com
+  </text>
+</svg>

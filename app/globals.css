@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  --color-aurad-50: #f0fdff;
+  --color-aurad-100: #cffafe;
+  --color-aurad-200: #a5f3fc;
+  --color-aurad-300: #67e8f9;
+  --color-aurad-400: #22d3ee;
+  --color-aurad-500: #06b6d4;
+  --color-aurad-600: #0891b2;
+  --color-aurad-700: #0e7490;
+  --color-aurad-800: #155e75;
+  --color-aurad-900: #083344;
+  --color-aurad-950: #020617;
+}
+
+body {
+  background-color: #020617;
+  color: #e2e8f0;
+}
+
+.glass-card {
+  background: rgba(2, 6, 23, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@media (min-width: 768px) {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+.neon-text {
+  text-shadow:
+    0 0 10px rgba(34, 211, 238, 0.5),
+    0 0 20px rgba(34, 211, 238, 0.3);
+}
+
+.neon-border {
+  box-shadow:
+    0 0 10px rgba(34, 211, 238, 0.2),
+    inset 0 0 10px rgba(34, 211, 238, 0.1);
+}
+
+/* Qualification form step transitions */
+.form-slide-in-right {
+  animation: slideInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.form-slide-in-left {
+  animation: slideInLeft 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.confirmation-icon {
+  animation: confirmPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes confirmPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
