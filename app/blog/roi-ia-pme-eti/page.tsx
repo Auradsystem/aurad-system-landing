@@ -1,52 +1,59 @@
-import React from "react";
-import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { SEO } from "../../components/SEO";
-import { CTASection } from "../../components/shared/CTASection";
+import { CTASection } from "@/components/shared/CTASection";
+
+export const metadata: Metadata = {
+  title: "ROI de l'IA en PME/ETI : ce que les chiffres disent vraiment",
+  description:
+    "95 % des projets IA generatifs ne livrent pas de ROI mesurable dans les 6 mois. Voici pourquoi, et comment les rares qui y arrivent s'y prennent.",
+  alternates: {
+    canonical: "https://auradsystem.com/blog/roi-ia-pme-eti",
+  },
+  openGraph: {
+    title: "ROI de l'IA en PME/ETI : ce que les chiffres disent vraiment",
+    description:
+      "95 % des projets IA generatifs ne livrent pas de ROI mesurable dans les 6 mois. Voici pourquoi, et comment les rares qui y arrivent s'y prennent.",
+    url: "https://auradsystem.com/blog/roi-ia-pme-eti",
+    type: "article",
+    publishedTime: "2026-04-06",
+  },
+};
+
+const blogPostingJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: "ROI de l'IA en PME/ETI : ce que les chiffres disent vraiment",
+  description:
+    "95 % des projets IA generatifs ne livrent pas de ROI mesurable dans les 6 mois. Voici pourquoi, et comment les rares qui y arrivent s'y prennent.",
+  datePublished: "2026-04-06",
+  author: {
+    "@type": "Person",
+    name: "Dali Bensalem",
+    url: "https://www.linkedin.com/in/dalibensalem",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Aurad System",
+    url: "https://auradsystem.com",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://auradsystem.com/blog/roi-ia-pme-eti",
+  },
+};
 
 export default function ArticleROIIAPMEETI() {
   return (
     <>
-      <SEO
-        title="ROI de l'IA en PME/ETI : ce que les chiffres disent vraiment"
-        description="95 % des projets IA generatifs ne livrent pas de ROI mesurable dans les 6 mois. Voici pourquoi, et comment les rares qui y arrivent s'y prennent."
-        path="/blog/roi-ia-pme-eti"
-        type="article"
-        publishedTime="2026-04-06"
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingJsonLd) }}
       />
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline:
-              "ROI de l'IA en PME/ETI : ce que les chiffres disent vraiment",
-            datePublished: "2026-04-06",
-            author: {
-              "@type": "Organization",
-              name: "Aurad System",
-              url: "https://auradsystem.com",
-            },
-            publisher: {
-              "@type": "Organization",
-              name: "Aurad System",
-              logo: {
-                "@type": "ImageObject",
-                url: "https://auradsystem.com/favicon.svg",
-              },
-            },
-            description:
-              "95 % des projets IA generatifs ne livrent pas de ROI mesurable dans les 6 mois. Voici pourquoi, et comment les rares qui y arrivent s'y prennent.",
-            url: "https://auradsystem.com/blog/roi-ia-pme-eti",
-            inLanguage: "fr-FR",
-          })}
-        </script>
-      </Helmet>
       <article className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <Link
-            to="/blog"
+            href="/blog"
             className="inline-flex items-center gap-2 text-gray-400 hover:text-aurad-400 transition-colors mb-8 text-sm"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -92,8 +99,8 @@ export default function ArticleROIIAPMEETI() {
                 </a>
                 ). 35 % en voient une partie. 60 % n'en voient presque aucun,
                 malgre les investissements. Ce n'est pas un probleme de
-                technologie — les modeles fonctionnent, les API sont stables.
-                Le probleme est ailleurs.
+                technologie — les modeles fonctionnent, les API sont stables. Le
+                probleme est ailleurs.
               </p>
 
               <p className="text-gray-300 leading-relaxed mb-4">
@@ -102,16 +109,16 @@ export default function ArticleROIIAPMEETI() {
                 pas du minimum pour prouver qu'ils fonctionnent : une baseline,
                 des KPIs, un mecanisme de mesure. "Most AI programs die not
                 because they failed, but because nobody could prove they
-                succeeded." Cette phrase, extraite d'une analyse de
-                300 implementations d'entreprise, decrit exactement ce qui se
-                passe dans la majorite des PME/ETI.
+                succeeded." Cette phrase, extraite d'une analyse de 300
+                implementations d'entreprise, decrit exactement ce qui se passe
+                dans la majorite des PME/ETI.
               </p>
 
               <p className="text-gray-300 leading-relaxed mb-4">
                 Le pilote tourne. Les equipes sont enthousiastes. Les managers
                 attendent un chiffre. Quand le chiffre ne vient pas, le budget
-                disparait — avant meme que le projet ait eu le temps de creer
-                de la valeur.
+                disparait — avant meme que le projet ait eu le temps de creer de
+                la valeur.
               </p>
 
               <p className="text-gray-300 leading-relaxed mb-4">
@@ -154,10 +161,10 @@ export default function ArticleROIIAPMEETI() {
                 <strong className="text-white">
                   Elles redesignent le process, pas juste l'outil.
                 </strong>{" "}
-                90 % des entreprises ayant atteint un ROI mesurable creditent
-                la refonte des workflows comme facteur cle — pas le modele
-                d'IA utilise. Ce n'est pas l'IA qui economise du temps ; c'est
-                la nouvelle organisation du travail que l'IA rend possible.
+                90 % des entreprises ayant atteint un ROI mesurable creditent la
+                refonte des workflows comme facteur cle — pas le modele d'IA
+                utilise. Ce n'est pas l'IA qui economise du temps ; c'est la
+                nouvelle organisation du travail que l'IA rend possible.
                 Seulement 21 % des utilisateurs de GenAI en entreprise ont fait
                 cette refonte (
                 <a
@@ -241,9 +248,9 @@ export default function ArticleROIIAPMEETI() {
                 </strong>{" "}
                 Un process que vos equipes repetent 100 a 200 fois par semaine,
                 avec un resultat attendu clair et un cout de l'erreur
-                acceptable. Pas la transformation de l'organisation — un cas.
-                Le plus ennuyeux, le plus repetitif, le plus chronophage. C'est
-                la que le ROI se materialise le plus vite et le plus clairement.
+                acceptable. Pas la transformation de l'organisation — un cas. Le
+                plus ennuyeux, le plus repetitif, le plus chronophage. C'est la
+                que le ROI se materialise le plus vite et le plus clairement.
               </p>
 
               <p className="text-gray-300 leading-relaxed mb-4">
@@ -263,18 +270,18 @@ export default function ArticleROIIAPMEETI() {
                 </strong>{" "}
                 Un{" "}
                 <Link
-                  to="/agents-ia"
+                  href="/agents-ia"
                   className="text-aurad-400 hover:text-aurad-300 underline"
                 >
-                  agent IA con&ccedil;u sur-mesure
+                  agent IA conçu sur-mesure
                 </Link>{" "}
                 pour vos donnees, vos formats, vos regles metier livre des
-                resultats tres differents d'un outil generique configure en
-                deux heures. C'est la difference entre un outil qui tourne en
+                resultats tres differents d'un outil generique configure en deux
+                heures. C'est la difference entre un outil qui tourne en
                 production 18 mois plus tard et un pilote qui reste un pilote.
                 Un travail d'{" "}
                 <Link
-                  to="/ingenierie-technique"
+                  href="/ingenierie-technique"
                   className="text-aurad-400 hover:text-aurad-300 underline"
                 >
                   ingenierie technique
@@ -290,10 +297,10 @@ export default function ArticleROIIAPMEETI() {
                 </strong>{" "}
                 Le passage du pilote a la production est le moment ou 46 % des
                 projets meurent. Pas parce que le pilote a echoue — parce que
-                personne n'a anticipe l'effort d'industrialisation. Infrastructure,
-                supervision, formation des equipes, maintenance du modele dans
-                le temps : ces couts doivent figurer dans le business case des
-                le premier jour, pas en phase 2 hypothetique.
+                personne n'a anticipe l'effort d'industrialisation.
+                Infrastructure, supervision, formation des equipes, maintenance
+                du modele dans le temps : ces couts doivent figurer dans le
+                business case des le premier jour, pas en phase 2 hypothetique.
               </p>
 
               <p className="text-gray-300 leading-relaxed">
@@ -301,8 +308,8 @@ export default function ArticleROIIAPMEETI() {
                 mecanismes de supervision : alertes sur les derives de
                 performance, logs structures, indicateurs de qualite visibles
                 sans acceder au code. C'est ce qui permet de defendre la valeur
-                du projet en interne — et de continuer a recevoir du budget
-                pour l'etendre.
+                du projet en interne — et de continuer a recevoir du budget pour
+                l'etendre.
               </p>
             </section>
 

@@ -68,5 +68,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+    {
+      url: "https://auradsystem.com/blog/roi-ia-pme-eti",
+      lastModified: "2026-04-06",
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
   ];
 }
