@@ -1,52 +1,61 @@
-import React from "react";
-import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { SEO } from "../../components/SEO";
-import { CTASection } from "../../components/shared/CTASection";
+import { CTASection } from "@/components/shared/CTASection";
+
+export const metadata: Metadata = {
+  title: "Pourquoi l'IA generique echoue dans les secteurs reglementes",
+  description:
+    "Les hallucinations de l'IA ont coute 67,4 milliards de dollars aux entreprises en 2024. Dans la sante, la finance ou le BTP, une reponse fausse est un risque reglementaire.",
+  alternates: {
+    canonical: "https://auradsystem.com/blog/ia-generique-secteurs-reglementes",
+  },
+  openGraph: {
+    title: "Pourquoi l'IA generique echoue dans les secteurs reglementes",
+    description:
+      "Les hallucinations de l'IA ont coute 67,4 milliards de dollars aux entreprises en 2024. Dans la sante, la finance ou le BTP, une reponse fausse est un risque reglementaire.",
+    url: "https://auradsystem.com/blog/ia-generique-secteurs-reglementes",
+    type: "article",
+    publishedTime: "2026-04-04",
+  },
+};
 
 export default function ArticleIAGeneriqueSecteurs() {
   return (
     <>
-      <SEO
-        title="Pourquoi l'IA generique echoue dans les secteurs reglementes"
-        description="Les hallucinations de l'IA ont coute 67,4 milliards de dollars aux entreprises en 2024. Dans la sante, la finance ou le BTP, une reponse fausse est un risque reglementaire."
-        path="/blog/ia-generique-secteurs-reglementes"
-        type="article"
-        publishedTime="2026-04-04"
-      />
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify({
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             headline:
               "Pourquoi l'IA generique echoue dans les secteurs reglementes",
+            description:
+              "Les hallucinations de l'IA ont coute 67,4 milliards de dollars aux entreprises en 2024. Dans la sante, la finance ou le BTP, une reponse fausse est un risque reglementaire.",
             datePublished: "2026-04-04",
             author: {
-              "@type": "Organization",
-              name: "Aurad System",
-              url: "https://auradsystem.com",
+              "@type": "Person",
+              name: "Dali Bensalem",
+              url: "https://www.linkedin.com/in/dalibensalem",
             },
             publisher: {
               "@type": "Organization",
               name: "Aurad System",
-              logo: {
-                "@type": "ImageObject",
-                url: "https://auradsystem.com/favicon.svg",
-              },
+              url: "https://auradsystem.com",
             },
-            description:
-              "Un wrapper ChatGPT ne connait pas vos normes, vos process, vos contraintes. Les secteurs reglementes ont besoin d'agents sur-mesure.",
-            url: "https://auradsystem.com/blog/ia-generique-secteurs-reglementes",
-            inLanguage: "fr-FR",
-          })}
-        </script>
-      </Helmet>
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id":
+                "https://auradsystem.com/blog/ia-generique-secteurs-reglementes",
+            },
+          }),
+        }}
+      />
       <article className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <Link
-            to="/blog"
+            href="/blog"
             className="inline-flex items-center gap-2 text-gray-400 hover:text-aurad-400 transition-colors mb-8 text-sm"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -251,7 +260,7 @@ export default function ArticleIAGeneriqueSecteurs() {
                 documentation normative ou les decisions a impact reglementaire,
                 il faut une architecture{" "}
                 <Link
-                  to="/developpement"
+                  href="/developpement"
                   className="text-aurad-400 hover:text-aurad-300 underline"
                 >
                   developpee sur-mesure
@@ -288,7 +297,7 @@ export default function ArticleIAGeneriqueSecteurs() {
                 performance en juin. Les donnees changent, les reglementations
                 evoluent. Les{" "}
                 <Link
-                  to="/agents-ia"
+                  href="/agents-ia"
                   className="text-aurad-400 hover:text-aurad-300 underline"
                 >
                   agents IA metier

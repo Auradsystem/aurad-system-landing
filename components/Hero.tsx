@@ -1,6 +1,8 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { pushEvent } from "@/lib/gtm";
 
 export const Hero: React.FC = () => {
@@ -110,7 +112,7 @@ export const Hero: React.FC = () => {
                 </span>
               </a>
               <Link
-                to="/realisations"
+                href="/realisations"
                 onClick={() =>
                   pushEvent({
                     event: "cta_click",

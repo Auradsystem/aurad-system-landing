@@ -1,6 +1,6 @@
 import React from "react";
 import { Bot, Code2, Building2, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const services = [
   {
@@ -96,7 +96,7 @@ export const Services: React.FC = () => {
                 </ul>
 
                 <Link
-                  to={service.link}
+                  href={service.link}
                   className="inline-flex items-center gap-2 text-aurad-400 text-sm font-semibold hover:text-aurad-300 transition-colors group/link"
                 >
                   {service.linkText}

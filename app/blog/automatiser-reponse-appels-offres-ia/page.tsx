@@ -1,51 +1,61 @@
-import React from "react";
-import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { SEO } from "../../components/SEO";
-import { CTASection } from "../../components/shared/CTASection";
+import { CTASection } from "@/components/shared/CTASection";
+
+export const metadata: Metadata = {
+  title: "Automatiser la reponse aux appels d'offres avec l'IA",
+  description:
+    "Un memoire technique complexe prend 10 a 20 heures. Avec un agent IA branche sur vos anciens dossiers, ce temps tombe a 1-2 heures de relecture.",
+  alternates: {
+    canonical:
+      "https://auradsystem.com/blog/automatiser-reponse-appels-offres-ia",
+  },
+  openGraph: {
+    title: "Automatiser la reponse aux appels d'offres avec l'IA",
+    description:
+      "Un memoire technique complexe prend 10 a 20 heures. Avec un agent IA branche sur vos anciens dossiers, ce temps tombe a 1-2 heures de relecture.",
+    url: "https://auradsystem.com/blog/automatiser-reponse-appels-offres-ia",
+    type: "article",
+    publishedTime: "2026-02-24",
+  },
+};
 
 export default function ArticleAppelsOffres() {
   return (
     <>
-      <SEO
-        title="Automatiser la reponse aux appels d'offres avec l'IA"
-        description="Un memoire technique complexe prend 10 a 20 heures. Avec un agent IA branche sur vos anciens dossiers, ce temps tombe a 1-2 heures de relecture."
-        path="/blog/automatiser-reponse-appels-offres-ia"
-        type="article"
-        publishedTime="2026-02-24"
-      />
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify({
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             headline: "Automatiser la reponse aux appels d'offres avec l'IA",
+            description:
+              "Un memoire technique complexe prend 10 a 20 heures. Avec un agent IA branche sur vos anciens dossiers, ce temps tombe a 1-2 heures de relecture.",
             datePublished: "2026-02-24",
             author: {
-              "@type": "Organization",
-              name: "Aurad System",
-              url: "https://auradsystem.com",
+              "@type": "Person",
+              name: "Dali Bensalem",
+              url: "https://www.linkedin.com/in/dalibensalem",
             },
             publisher: {
               "@type": "Organization",
               name: "Aurad System",
-              logo: {
-                "@type": "ImageObject",
-                url: "https://auradsystem.com/favicon.svg",
-              },
+              url: "https://auradsystem.com",
             },
-            description:
-              "60% du score final en marche public vient de la valeur technique. Comment l'IA peut structurer et renforcer vos memoires techniques.",
-            url: "https://auradsystem.com/blog/automatiser-reponse-appels-offres-ia",
-            inLanguage: "fr-FR",
-          })}
-        </script>
-      </Helmet>
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id":
+                "https://auradsystem.com/blog/automatiser-reponse-appels-offres-ia",
+            },
+          }),
+        }}
+      />
       <article className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <Link
-            to="/blog"
+            href="/blog"
             className="inline-flex items-center gap-2 text-gray-400 hover:text-aurad-400 transition-colors mb-8 text-sm"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -222,7 +232,7 @@ export default function ArticleAppelsOffres() {
                 Pour des memoires techniques en francais avec du vocabulaire
                 BTP, des normes NF et des references CCTP, un{" "}
                 <Link
-                  to="/developpement"
+                  href="/developpement"
                   className="text-aurad-400 hover:text-aurad-300 underline"
                 >
                   systeme sur-mesure
@@ -250,7 +260,7 @@ export default function ArticleAppelsOffres() {
                 Chaque dossier genere par l'IA est relu et valide par un
                 professionnel du metier. L'
                 <Link
-                  to="/agents-ia"
+                  href="/agents-ia"
                   className="text-aurad-400 hover:text-aurad-300 underline"
                 >
                   agent IA

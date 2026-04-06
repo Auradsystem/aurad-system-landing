@@ -1,6 +1,8 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
 import { Logo } from "./Logo";
 import { pushEvent } from "@/lib/gtm";
 
@@ -39,7 +41,7 @@ export const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo Section */}
-          <Link to="/" className="flex-shrink-0 flex items-center gap-3">
+          <Link href="/" className="flex-shrink-0 flex items-center gap-3">
             <Logo className="w-10 h-10" />
             <span className="text-2xl font-bold tracking-wider text-white">
               AURAD <span className="text-aurad-400">SYSTEM</span>
@@ -52,14 +54,14 @@ export const Navbar: React.FC = () => {
               {navItems.map((item) => (
                 <Link
                   key={item.label}
-                  to={item.href}
+                  href={item.href}
                   className="text-gray-300 hover:text-aurad-400 transition-colors px-3 py-2 rounded-md text-sm font-medium uppercase tracking-wide"
                 >
                   {item.label}
                 </Link>
               ))}
               <Link
-                to="/#contact"
+                href="/#contact"
                 onClick={() =>
                   pushEvent({
                     event: "cta_click",
@@ -105,7 +107,7 @@ export const Navbar: React.FC = () => {
             {navItems.map((item) => (
               <Link
                 key={item.label}
-                to={item.href}
+                href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-gray-300 hover:text-aurad-400 block px-3 py-2 rounded-md text-base font-medium"
               >
@@ -113,7 +115,7 @@ export const Navbar: React.FC = () => {
               </Link>
             ))}
             <Link
-              to="/#contact"
+              href="/#contact"
               onClick={() => {
                 setIsMobileMenuOpen(false);
                 pushEvent({

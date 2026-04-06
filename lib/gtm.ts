@@ -50,7 +50,7 @@ const STEP_NAMES = [
 function pushEvent(evt: GTMEvent): void {
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push(evt);
-  if (import.meta.env.DEV) {
+  if (process.env.NODE_ENV === "development") {
     console.log("[GTM]", evt);
   }
 }

@@ -1,52 +1,62 @@
-import React from "react";
-import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { SEO } from "../../components/SEO";
-import { CTASection } from "../../components/shared/CTASection";
+import { CTASection } from "@/components/shared/CTASection";
+
+export const metadata: Metadata = {
+  title: "RAG metier : rendre votre documentation technique interrogeable",
+  description:
+    "10 000 pages de docs inaccessibles ? Un RAG bien construit repond en secondes, avec les sources. Mais 70 % des projets RAG echouent en production.",
+  alternates: {
+    canonical:
+      "https://auradsystem.com/blog/rag-metier-documentation-technique",
+  },
+  openGraph: {
+    title: "RAG metier : rendre votre documentation technique interrogeable",
+    description:
+      "10 000 pages de docs inaccessibles ? Un RAG bien construit repond en secondes, avec les sources. Mais 70 % des projets RAG echouent en production.",
+    url: "https://auradsystem.com/blog/rag-metier-documentation-technique",
+    type: "article",
+    publishedTime: "2026-03-10",
+  },
+};
 
 export default function ArticleRAGMetier() {
   return (
     <>
-      <SEO
-        title="RAG metier : rendre votre documentation technique interrogeable"
-        description="10 000 pages de docs inaccessibles ? Un RAG bien construit repond en secondes, avec les sources. Mais 70 % des projets RAG echouent en production."
-        path="/blog/rag-metier-documentation-technique"
-        type="article"
-        publishedTime="2026-03-10"
-      />
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify({
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             headline:
               "RAG metier : rendre votre documentation technique interrogeable",
+            description:
+              "10 000 pages de docs inaccessibles ? Un RAG bien construit repond en secondes, avec les sources. Mais 70 % des projets RAG echouent en production.",
             datePublished: "2026-03-10",
             author: {
-              "@type": "Organization",
-              name: "Aurad System",
-              url: "https://auradsystem.com",
+              "@type": "Person",
+              name: "Dali Bensalem",
+              url: "https://www.linkedin.com/in/dalibensalem",
             },
             publisher: {
               "@type": "Organization",
               name: "Aurad System",
-              logo: {
-                "@type": "ImageObject",
-                url: "https://auradsystem.com/favicon.svg",
-              },
+              url: "https://auradsystem.com",
             },
-            description:
-              "10 000 pages de docs inaccessibles ? Un RAG multimodal retrouve l'info en secondes avec les sources.",
-            url: "https://auradsystem.com/blog/rag-metier-documentation-technique",
-            inLanguage: "fr-FR",
-          })}
-        </script>
-      </Helmet>
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id":
+                "https://auradsystem.com/blog/rag-metier-documentation-technique",
+            },
+          }),
+        }}
+      />
       <article className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <Link
-            to="/blog"
+            href="/blog"
             className="inline-flex items-center gap-2 text-gray-400 hover:text-aurad-400 transition-colors mb-8 text-sm"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -251,7 +261,7 @@ export default function ArticleRAGMetier() {
                 outil fiable d'un generateur de texte. Et c'est ce qui permet a
                 vos equipes de faire confiance au systeme. Un{" "}
                 <Link
-                  to="/developpement"
+                  href="/developpement"
                   className="text-aurad-400 hover:text-aurad-300 underline"
                 >
                   developpement sur-mesure

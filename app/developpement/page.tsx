@@ -1,7 +1,6 @@
-import React from "react";
-import { SEO } from "../components/SEO";
+import type { Metadata } from "next";
 import { Code2, Database, BarChart2, FileText, Shield } from "lucide-react";
-import { CTASection } from "../components/shared/CTASection";
+import { CTASection } from "@/components/shared/CTASection";
 
 const services = [
   {
@@ -31,14 +30,22 @@ const services = [
   },
 ];
 
+export const metadata: Metadata = {
+  title: "Developpement sur-mesure pour PME/ETI",
+  description:
+    "Applications web, outils metier, automatisation de processus. Du prototype en 2 semaines au deploiement en production. Code sur-mesure, pas de no-code.",
+  alternates: { canonical: "https://auradsystem.com/developpement" },
+  openGraph: {
+    title: "Developpement sur-mesure pour PME/ETI",
+    description:
+      "Applications web, outils metier, automatisation de processus. Du prototype en 2 semaines au deploiement en production. Code sur-mesure, pas de no-code.",
+    url: "https://auradsystem.com/developpement",
+  },
+};
+
 export default function DeveloppementPage() {
   return (
     <>
-      <SEO
-        title="Developpement sur-mesure pour PME/ETI"
-        description="Applications web, outils metier, automatisation de processus. Du prototype en 2 semaines au deploiement en production. Code sur-mesure, pas de no-code."
-        path="/developpement"
-      />
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-aurad-900/50 border border-aurad-500/30 mb-6">

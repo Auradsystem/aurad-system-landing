@@ -1,51 +1,59 @@
-import React from "react";
-import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { SEO } from "../../components/SEO";
-import { CTASection } from "../../components/shared/CTASection";
+import { CTASection } from "@/components/shared/CTASection";
+
+export const metadata: Metadata = {
+  title: "Agents IA en entreprise : au-dela du chatbot",
+  description:
+    "80 % des entreprises qui deploient l'IA generative ne constatent aucun impact. Le probleme n'est pas la techno. C'est la difference entre un chatbot et un agent.",
+  alternates: {
+    canonical: "https://auradsystem.com/blog/agents-ia-entreprise",
+  },
+  openGraph: {
+    title: "Agents IA en entreprise : au-dela du chatbot",
+    description:
+      "80 % des entreprises qui deploient l'IA generative ne constatent aucun impact. Le probleme n'est pas la techno. C'est la difference entre un chatbot et un agent.",
+    url: "https://auradsystem.com/blog/agents-ia-entreprise",
+    type: "article",
+    publishedTime: "2026-02-10",
+  },
+};
 
 export default function ArticleAgentsIA() {
   return (
     <>
-      <SEO
-        title="Agents IA en entreprise : au-dela du chatbot"
-        description="80 % des entreprises qui deploient l'IA generative ne constatent aucun impact. Le probleme n'est pas la techno. C'est la difference entre un chatbot et un agent."
-        path="/blog/agents-ia-entreprise"
-        type="article"
-        publishedTime="2026-02-10"
-      />
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify({
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             headline: "Agents IA en entreprise : au-dela du chatbot",
+            description:
+              "80 % des entreprises qui deploient l'IA generative ne constatent aucun impact. Le probleme n'est pas la techno. C'est la difference entre un chatbot et un agent.",
             datePublished: "2026-02-10",
             author: {
-              "@type": "Organization",
-              name: "Aurad System",
-              url: "https://auradsystem.com",
+              "@type": "Person",
+              name: "Dali Bensalem",
+              url: "https://www.linkedin.com/in/dalibensalem",
             },
             publisher: {
               "@type": "Organization",
               name: "Aurad System",
-              logo: {
-                "@type": "ImageObject",
-                url: "https://auradsystem.com/favicon.svg",
-              },
+              url: "https://auradsystem.com",
             },
-            description:
-              "Un agent IA n'est pas un chatbot. C'est un process metier automatise qui comprend vos donnees, vos regles, et agit en autonomie.",
-            url: "https://auradsystem.com/blog/agents-ia-entreprise",
-            inLanguage: "fr-FR",
-          })}
-        </script>
-      </Helmet>
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": "https://auradsystem.com/blog/agents-ia-entreprise",
+            },
+          }),
+        }}
+      />
       <article className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <Link
-            to="/blog"
+            href="/blog"
             className="inline-flex items-center gap-2 text-gray-400 hover:text-aurad-400 transition-colors mb-8 text-sm"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -249,7 +257,7 @@ export default function ArticleAgentsIA() {
                 production. C'est aussi la ou la plupart des projets calent — et
                 la ou un{" "}
                 <Link
-                  to="/developpement"
+                  href="/developpement"
                   className="text-aurad-400 hover:text-aurad-300 underline"
                 >
                   developpement sur-mesure
@@ -271,7 +279,7 @@ export default function ArticleAgentsIA() {
                 oublie. Il faut suivre les taux de resolution, les erreurs, les
                 escalades. Et ajuster les regles metier au fil du temps. Les{" "}
                 <Link
-                  to="/agents-ia"
+                  href="/agents-ia"
                   className="text-aurad-400 hover:text-aurad-300 underline"
                 >
                   agents IA metier

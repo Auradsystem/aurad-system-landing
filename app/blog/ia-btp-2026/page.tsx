@@ -1,51 +1,57 @@
-import React from "react";
-import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { SEO } from "../../components/SEO";
-import { CTASection } from "../../components/shared/CTASection";
+import { CTASection } from "@/components/shared/CTASection";
+
+export const metadata: Metadata = {
+  title: "IA dans le BTP : ce qui marche vraiment en 2026",
+  description:
+    "27 % des entreprises du BTP ont fait de l'IA un axe strategique. Mais seulement 32 % estiment avoir atteint leurs objectifs. Voici les cas d'usage a ROI reel.",
+  alternates: { canonical: "https://auradsystem.com/blog/ia-btp-2026" },
+  openGraph: {
+    title: "IA dans le BTP : ce qui marche vraiment en 2026",
+    description:
+      "27 % des entreprises du BTP ont fait de l'IA un axe strategique. Mais seulement 32 % estiment avoir atteint leurs objectifs. Voici les cas d'usage a ROI reel.",
+    url: "https://auradsystem.com/blog/ia-btp-2026",
+    type: "article",
+    publishedTime: "2026-03-24",
+  },
+};
 
 export default function ArticleIABTP() {
   return (
     <>
-      <SEO
-        title="IA dans le BTP : ce qui marche vraiment en 2026"
-        description="27 % des entreprises du BTP ont fait de l'IA un axe strategique. Mais seulement 32 % estiment avoir atteint leurs objectifs. Voici les cas d'usage a ROI reel."
-        path="/blog/ia-btp-2026"
-        type="article"
-        publishedTime="2026-03-24"
-      />
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify({
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             headline: "IA dans le BTP : ce qui marche vraiment en 2026",
+            description:
+              "27 % des entreprises du BTP ont fait de l'IA un axe strategique. Mais seulement 32 % estiment avoir atteint leurs objectifs. Voici les cas d'usage a ROI reel.",
             datePublished: "2026-03-24",
             author: {
-              "@type": "Organization",
-              name: "Aurad System",
-              url: "https://auradsystem.com",
+              "@type": "Person",
+              name: "Dali Bensalem",
+              url: "https://www.linkedin.com/in/dalibensalem",
             },
             publisher: {
               "@type": "Organization",
               name: "Aurad System",
-              logo: {
-                "@type": "ImageObject",
-                url: "https://auradsystem.com/favicon.svg",
-              },
+              url: "https://auradsystem.com",
             },
-            description:
-              "Au-dela du buzz, quels cas d'usage IA generent un ROI mesurable dans la construction et les travaux publics.",
-            url: "https://auradsystem.com/blog/ia-btp-2026",
-            inLanguage: "fr-FR",
-          })}
-        </script>
-      </Helmet>
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": "https://auradsystem.com/blog/ia-btp-2026",
+            },
+          }),
+        }}
+      />
       <article className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <Link
-            to="/blog"
+            href="/blog"
             className="inline-flex items-center gap-2 text-gray-400 hover:text-aurad-400 transition-colors mb-8 text-sm"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -219,7 +225,7 @@ export default function ArticleIABTP() {
                 l'IA. Vos anciens memoires techniques, vos devis, vos comptes
                 rendus de chantier — ces documents existent. Un{" "}
                 <Link
-                  to="/agents-ia"
+                  href="/agents-ia"
                   className="text-aurad-400 hover:text-aurad-300 underline"
                 >
                   agent IA metier
@@ -236,7 +242,7 @@ export default function ArticleIABTP() {
                 leur equipe. Ce n'est pas le sujet. Le sujet est de trouver un
                 partenaire technique qui comprend le metier et qui{" "}
                 <Link
-                  to="/developpement"
+                  href="/developpement"
                   className="text-aurad-400 hover:text-aurad-300 underline"
                 >
                   developpe la solution

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Mail, MessageCircle } from "lucide-react";
 import { QualificationForm } from "./QualificationForm";

@@ -1,14 +1,6 @@
-import React from "react";
-import { SEO } from "../components/SEO";
-import {
-  Bot,
-  Search,
-  FileText,
-  MessageSquare,
-  Zap,
-  ArrowRight,
-} from "lucide-react";
-import { CTASection } from "../components/shared/CTASection";
+import type { Metadata } from "next";
+import { Bot, Search, FileText, MessageSquare, Zap } from "lucide-react";
+import { CTASection } from "@/components/shared/CTASection";
 
 const useCases = [
   {
@@ -56,14 +48,22 @@ const steps = [
   },
 ];
 
+export const metadata: Metadata = {
+  title: "Agents IA metier pour PME/ETI",
+  description:
+    "Des agents IA entraines sur vos donnees et vos regles metier. Pas un chatbot generique — un outil qui comprend votre secteur et agit en autonomie.",
+  alternates: { canonical: "https://auradsystem.com/agents-ia" },
+  openGraph: {
+    title: "Agents IA metier pour PME/ETI",
+    description:
+      "Des agents IA entraines sur vos donnees et vos regles metier. Pas un chatbot generique — un outil qui comprend votre secteur et agit en autonomie.",
+    url: "https://auradsystem.com/agents-ia",
+  },
+};
+
 export default function AgentsIAPage() {
   return (
     <>
-      <SEO
-        title="Agents IA metier pour PME/ETI"
-        description="Des agents IA entraines sur vos donnees et vos regles metier. Pas un chatbot generique — un outil qui comprend votre secteur et agit en autonomie."
-        path="/agents-ia"
-      />
       {/* Hero */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
