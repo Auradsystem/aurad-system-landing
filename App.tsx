@@ -20,6 +20,9 @@ const ArticleIABTP = lazy(() => import("./pages/blog/ia-btp-2026"));
 const ArticleIAGeneriqueSecteurs = lazy(
   () => import("./pages/blog/ia-generique-secteurs-reglementes"),
 );
+const ArticleROIIAPMEETI = lazy(
+  () => import("./pages/blog/roi-ia-pme-eti"),
+);
 
 function App() {
   return (
@@ -49,6 +52,10 @@ function App() {
             <Route
               path="/blog/ia-generique-secteurs-reglementes"
               element={<ArticleIAGeneriqueSecteurs />}
+            />
+            <Route
+              path="/blog/roi-ia-pme-eti"
+              element={<ArticleROIIAPMEETI />}
             />
           </Routes>
         </Suspense>

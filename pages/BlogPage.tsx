@@ -10,9 +10,18 @@ const publishedSlugs = new Set([
   "rag-metier-documentation-technique",
   "ia-btp-2026",
   "ia-generique-secteurs-reglementes",
+  "roi-ia-pme-eti",
 ]);
 
 const articles = [
+  {
+    slug: "roi-ia-pme-eti",
+    title: "ROI de l'IA en PME/ETI : ce que les chiffres disent vraiment",
+    excerpt:
+      "95 % des projets IA generatifs ne livrent pas de ROI mesurable dans les 6 mois. Pourquoi, et comment les rares qui y arrivent s'y prennent.",
+    date: "2026-04-06",
+    category: "IA appliquee",
+  },
   {
     slug: "ia-generique-secteurs-reglementes",
     title: "Pourquoi l'IA generique echoue dans les secteurs reglementes",
