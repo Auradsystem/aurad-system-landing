@@ -10,9 +10,18 @@ const publishedSlugs = new Set([
   "ia-btp-2026",
   "ia-generique-secteurs-reglementes",
   "roi-ia-pme-eti",
+  "donnees-metier-ia-qualite",
 ]);
 
 const articles = [
+  {
+    slug: "donnees-metier-ia-qualite",
+    title: "Données métier et IA : pourquoi la qualité fait tout",
+    excerpt:
+      "60 % des projets IA seront abandonnés d'ici fin 2026 faute de données exploitables. Le modèle n'y est pour rien — c'est la donnée en amont qui compromet tout.",
+    date: "2026-04-13",
+    category: "IA appliquee",
+  },
   {
     slug: "roi-ia-pme-eti",
     title: "ROI de l'IA en PME/ETI : ce que les chiffres disent vraiment",
