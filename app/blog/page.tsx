@@ -10,11 +10,21 @@ const publishedSlugs = new Set([
   "ia-btp-2026",
   "ia-generique-secteurs-reglementes",
   "roi-ia-pme-eti",
-  "qualite-donnees-ia-entreprise",
   "donnees-metier-ia-qualite",
+  "qualite-donnees-ia-entreprise",
+  "agents-ia-production-ce-qui-marche",
 ]);
 
 const articles = [
+  {
+    slug: "agents-ia-production-ce-qui-marche",
+    title:
+      "Agents IA en production : pourquoi la plupart echouent (et ce que font les autres)",
+    excerpt:
+      "Sur ITBench, un modele frontier reussit 75 % des taches enterprise. Un open-source comparable : 12 %. Ce qui les separe n'est pas la puissance brute.",
+    date: "2026-04-16",
+    category: "IA appliquee",
+  },
   {
     slug: "qualite-donnees-ia-entreprise",
     title: "Données métier et IA : 93 % des entreprises ne sont pas prêtes",

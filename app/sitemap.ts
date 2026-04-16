@@ -75,14 +75,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: "https://auradsystem.com/blog/donnees-metier-ia-qualite",
+      lastModified: "2026-04-13",
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: "https://auradsystem.com/blog/qualite-donnees-ia-entreprise",
       lastModified: "2026-04-16",
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: "https://auradsystem.com/blog/donnees-metier-ia-qualite",
-      lastModified: "2026-04-13",
+      url: "https://auradsystem.com/blog/agents-ia-production-ce-qui-marche",
+      lastModified: "2026-04-16",
       changeFrequency: "monthly",
       priority: 0.7,
     },
