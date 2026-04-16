@@ -10,10 +10,19 @@ const publishedSlugs = new Set([
   "ia-btp-2026",
   "ia-generique-secteurs-reglementes",
   "roi-ia-pme-eti",
+  "qualite-donnees-ia-entreprise",
   "donnees-metier-ia-qualite",
 ]);
 
 const articles = [
+  {
+    slug: "qualite-donnees-ia-entreprise",
+    title: "Données métier et IA : 93 % des entreprises ne sont pas prêtes",
+    excerpt:
+      "Seulement 7 % des entreprises ont des données complètement prêtes pour l'IA. Le vrai blocage des projets n'est pas le modèle — c'est ce qu'on lui donne à traiter.",
+    date: "2026-04-16",
+    category: "IA appliquee",
+  },
   {
     slug: "donnees-metier-ia-qualite",
     title: "Données métier et IA : pourquoi la qualité fait tout",
