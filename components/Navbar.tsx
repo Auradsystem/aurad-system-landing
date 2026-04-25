@@ -23,7 +23,7 @@ export const Navbar: React.FC = () => {
     const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
-          setIsScrolled(window.scrollY > 20);
+          setIsScrolled(window.scrollY > 24);
           ticking = false;
         });
         ticking = true;
@@ -34,28 +34,32 @@ export const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <nav
-      aria-label="Navigation principale"
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? "bg-aurad-950/90 md:bg-aurad-950/80 md:backdrop-blur-lg border-b border-white/5" : "bg-transparent"}`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo Section */}
-          <Link href="/" className="flex-shrink-0 flex items-center gap-3">
-            <Logo className="w-10 h-10" />
-            <span className="text-2xl font-bold tracking-wider text-white">
-              AURAD <span className="text-aurad-400">SYSTEM</span>
-            </span>
-          </Link>
+    <>
+      <nav
+        aria-label="Navigation principale"
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+          isScrolled
+            ? "bg-aurad-950/[0.88] backdrop-blur-xl border-b border-white/[0.06]"
+            : "bg-transparent border-b border-transparent"
+        }`}
+      >
+        <div className="max-w-[1240px] mx-auto px-5 sm:px-7">
+          <div className="flex items-center justify-between h-[72px]">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-3">
+              <Logo className="w-[34px] h-[34px]" />
+              <span className="text-[17px] font-bold tracking-[0.09em] text-white">
+                AURAD <span className="text-aurad-400">SYSTEM</span>
+              </span>
+            </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-6">
+            {/* Desktop Nav */}
+            <div className="hidden md:flex items-center gap-1">
               {navItems.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="text-gray-300 hover:text-aurad-400 transition-colors px-3 py-2 rounded-md text-sm font-medium uppercase tracking-wide"
+                  className="px-3 py-2 text-[12px] font-medium tracking-[0.07em] uppercase text-slate-500 hover:text-slate-200 transition-colors rounded-md"
                 >
                   {item.label}
                 </Link>
@@ -69,15 +73,13 @@ export const Navbar: React.FC = () => {
                     cta_location: "nav",
                   })
                 }
-                className="bg-aurad-400/10 border border-aurad-400 text-aurad-400 hover:bg-aurad-400 hover:text-aurad-950 transition-colors px-6 py-2 rounded-full text-sm font-semibold neon-border"
+                className="ml-3 inline-flex items-center px-5 py-[9px] rounded-full text-[13px] font-semibold tracking-[0.02em] text-aurad-400 bg-aurad-400/[0.08] border border-aurad-400/30 hover:bg-aurad-400 hover:text-aurad-950 transition-colors"
               >
                 Contact
               </Link>
             </div>
-          </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+            {/* Mobile hamburger */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-expanded={isMobileMenuOpen}
@@ -85,52 +87,57 @@ export const Navbar: React.FC = () => {
               aria-label={
                 isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"
               }
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+              className="md:hidden p-2 text-slate-300 hover:text-white"
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
+                <X className="w-[22px] h-[22px]" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <Menu className="w-[22px] h-[22px]" />
               )}
             </button>
           </div>
         </div>
-      </div>
+      </nav>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div
-          id="mobile-menu"
-          className="md:hidden bg-aurad-950/98 border-b border-white/10"
+      {/* Mobile drawer */}
+      <div
+        id="mobile-menu"
+        className={`fixed inset-0 z-[99] flex flex-col items-center justify-center gap-7 bg-aurad-950/[0.97] transition-transform duration-[400ms] [transition-timing-function:cubic-bezier(.16,1,.3,1)] md:hidden ${
+          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <button
+          onClick={() => setIsMobileMenuOpen(false)}
+          aria-label="Fermer le menu"
+          className="absolute top-5 right-5 p-2 text-slate-500 hover:text-white"
         >
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-gray-300 hover:text-aurad-400 block px-3 py-2 rounded-md text-base font-medium"
-              >
-                {item.label}
-              </Link>
-            ))}
-            <Link
-              href="/#contact"
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                pushEvent({
-                  event: "cta_click",
-                  cta_text: "Me Contacter",
-                  cta_location: "nav",
-                });
-              }}
-              className="block w-full text-center mt-4 bg-aurad-600 text-white px-3 py-3 rounded-md font-bold"
-            >
-              Me Contacter
-            </Link>
-          </div>
-        </div>
-      )}
-    </nav>
+          <X className="w-[22px] h-[22px]" />
+        </button>
+        {navItems.map((item) => (
+          <Link
+            key={item.label}
+            href={item.href}
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="text-[22px] font-semibold tracking-[0.06em] text-white"
+          >
+            {item.label}
+          </Link>
+        ))}
+        <Link
+          href="/#contact"
+          onClick={() => {
+            setIsMobileMenuOpen(false);
+            pushEvent({
+              event: "cta_click",
+              cta_text: "Me Contacter",
+              cta_location: "nav",
+            });
+          }}
+          className="mt-2 px-8 py-3 bg-aurad-400 text-aurad-950 rounded-[10px] text-[15px] font-bold"
+        >
+          Me contacter
+        </Link>
+      </div>
+    </>
   );
 };

@@ -62,6 +62,36 @@ const DOMAIN_LABELS: Record<string, string> = {
   piloter: "Ingénierie",
 };
 
+interface OptionBtnProps {
+  selected: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+  centered?: boolean;
+}
+
+const OptionBtn: React.FC<OptionBtnProps> = ({
+  selected,
+  onClick,
+  children,
+  centered = false,
+}) => (
+  <button
+    type="button"
+    onClick={onClick}
+    className="rounded-[10px] px-4 py-3.5 text-white cursor-pointer font-[inherit] transition-all duration-200"
+    style={{
+      border: `1px solid ${selected ? "rgba(34,211,238,0.5)" : "rgba(255,255,255,0.07)"}`,
+      background: selected ? "rgba(34,211,238,0.07)" : "rgba(255,255,255,0.02)",
+      boxShadow: selected
+        ? "0 0 0 1px rgba(34,211,238,0.3), 0 0 20px rgba(34,211,238,0.1)"
+        : "none",
+      textAlign: centered ? "center" : "left",
+    }}
+  >
+    {children}
+  </button>
+);
+
 export const QualificationForm: React.FC = () => {
   const [step, setStep] = useState(0);
   const [data, setData] = useState<FormData>(INITIAL_DATA);
@@ -164,67 +194,63 @@ export const QualificationForm: React.FC = () => {
   };
 
   const renderStep0 = () => (
-    <div className="form-step-content">
-      <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+    <div>
+      <h3 className="text-[22px] font-bold text-white mb-1.5">
         Quel est votre besoin ?
       </h3>
-      <p className="text-gray-400 mb-8">
+      <p className="text-slate-500 text-sm mb-6">
         Sélectionnez ce qui correspond le mieux à votre situation.
       </p>
-      <div className="grid sm:grid-cols-3 gap-4">
+      <div className="grid gap-3 [grid-template-columns:repeat(auto-fit,minmax(140px,1fr))]">
         {[
           {
             value: "automatiser" as const,
-            icon: <Bot className="w-8 h-8" />,
+            icon: <Bot className="w-[26px] h-[26px]" strokeWidth={1.5} />,
             label: "Automatiser",
-            desc: "Vos équipes perdent du temps sur des tâches répétitives",
+            desc: "Tâches répétitives à déléguer à l'IA",
           },
           {
             value: "construire" as const,
-            icon: <Code2 className="w-8 h-8" />,
+            icon: <Code2 className="w-[26px] h-[26px]" strokeWidth={1.5} />,
             label: "Construire",
-            desc: "Vous avez besoin d'un outil métier sur-mesure",
+            desc: "Outil métier sur-mesure",
           },
           {
             value: "piloter" as const,
-            icon: <Building2 className="w-8 h-8" />,
+            icon: <Building2 className="w-[26px] h-[26px]" strokeWidth={1.5} />,
             label: "Piloter",
-            desc: "Vous lancez un projet technique avec des lots spéciaux",
+            desc: "Projet technique avec lots spéciaux",
           },
         ].map((opt) => (
-          <button
+          <OptionBtn
             key={opt.value}
-            type="button"
-            onClick={() => {
-              setData((d) => ({ ...d, domain: opt.value }));
-            }}
-            className={`group relative p-6 rounded-xl border text-left transition-all duration-300 ${
-              data.domain === opt.value
-                ? "border-aurad-500 bg-aurad-500/10 neon-border"
-                : "border-white/10 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04]"
-            }`}
+            selected={data.domain === opt.value}
+            onClick={() => setData((d) => ({ ...d, domain: opt.value }))}
           >
             <div
-              className={`mb-4 transition-colors ${data.domain === opt.value ? "text-aurad-400" : "text-gray-500 group-hover:text-gray-400"}`}
+              className="mb-2.5 transition-colors"
+              style={{
+                color: data.domain === opt.value ? "#22d3ee" : "#475569",
+              }}
             >
               {opt.icon}
             </div>
-            <h4 className="text-lg font-semibold text-white mb-1">
-              {opt.label}
-            </h4>
-            <p className="text-sm text-gray-400">{opt.desc}</p>
-          </button>
+            <div className="text-[15px] font-bold mb-1">{opt.label}</div>
+            <div className="text-[12px] text-slate-500 leading-[1.4]">
+              {opt.desc}
+            </div>
+          </OptionBtn>
         ))}
       </div>
     </div>
   );
 
   const renderStep1 = () => (
-    <div className="form-step-content">
-      <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+    <div>
+      <h3 className="text-[22px] font-bold text-white mb-1.5">
         Décrivez votre situation
       </h3>
-      <p className="text-gray-400 mb-8">
+      <p className="text-slate-500 text-sm mb-5">
         Quelques lignes suffisent. Plus vous êtes précis, mieux je pourrai vous
         aider.
       </p>
@@ -235,83 +261,70 @@ export const QualificationForm: React.FC = () => {
         placeholder={PLACEHOLDERS[data.domain || "default"]}
         rows={4}
         autoFocus
-        className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-aurad-500 focus:ring-1 focus:ring-aurad-500/50 transition-colors resize-none text-base leading-relaxed"
+        className="form-input resize-none"
       />
-      <p className="text-xs text-gray-500 mt-2">
+      <p className="text-[12px] text-slate-600 mt-2">
         {data.problem.length < 10
-          ? `Minimum 10 caractères (${data.problem.length}/10)`
-          : "Parfait, continuez si vous le souhaitez."}
+          ? `${data.problem.length}/10 caractères minimum`
+          : "✓ Parfait, continuez si vous le souhaitez."}
       </p>
     </div>
   );
 
   const renderStep2 = () => (
-    <div className="form-step-content">
-      <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
-        Calendrier & budget
+    <div>
+      <h3 className="text-[22px] font-bold text-white mb-1.5">
+        Calendrier &amp; budget
       </h3>
-      <p className="text-gray-400 mb-8">Pour mieux cadrer votre projet.</p>
-
-      <div className="mb-8">
-        <label className="block text-sm font-medium text-gray-300 mb-3">
+      <p className="text-slate-500 text-sm mb-5">
+        Pour mieux cadrer votre projet.
+      </p>
+      <div className="mb-6">
+        <label className="block text-[13px] font-semibold text-slate-400 mb-2.5">
           Quand souhaitez-vous démarrer ?
         </label>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-2">
           {[
-            { value: "urgent" as const, label: "Urgent", desc: "< 1 mois" },
-            { value: "court" as const, label: "Court terme", desc: "1-3 mois" },
-            { value: "moyen" as const, label: "Moyen terme", desc: "3-6 mois" },
+            { v: "urgent" as const, l: "Urgent", d: "< 1 mois" },
+            { v: "court" as const, l: "Court terme", d: "1–3 mois" },
+            { v: "moyen" as const, l: "Moyen terme", d: "3–6 mois" },
             {
-              value: "exploration" as const,
-              label: "Je me renseigne",
-              desc: "Pas de date",
+              v: "exploration" as const,
+              l: "Je me renseigne",
+              d: "Pas de date",
             },
           ].map((opt) => (
-            <button
-              key={opt.value}
-              type="button"
-              onClick={() => setData((d) => ({ ...d, timeline: opt.value }))}
-              className={`p-3 rounded-lg border text-left transition-all duration-200 ${
-                data.timeline === opt.value
-                  ? "border-aurad-500 bg-aurad-500/10 neon-border"
-                  : "border-white/10 bg-white/[0.02] hover:border-white/20"
-              }`}
+            <OptionBtn
+              key={opt.v}
+              selected={data.timeline === opt.v}
+              onClick={() => setData((d) => ({ ...d, timeline: opt.v }))}
             >
-              <span className="block text-sm font-semibold text-white">
-                {opt.label}
-              </span>
-              <span className="block text-xs text-gray-400">{opt.desc}</span>
-            </button>
+              <span className="block text-[14px] font-semibold">{opt.l}</span>
+              <span className="block text-[12px] text-slate-500">{opt.d}</span>
+            </OptionBtn>
           ))}
         </div>
       </div>
-
       <div>
-        <label className="block text-sm font-medium text-gray-300 mb-3">
+        <label className="block text-[13px] font-semibold text-slate-400 mb-2.5">
           Budget envisagé
         </label>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <div className="grid grid-cols-3 gap-2">
           {[
-            { value: "<5k" as const, label: "< 5 000 €" },
-            { value: "5-15k" as const, label: "5 - 15 000 €" },
-            { value: "15-50k" as const, label: "15 - 50 000 €" },
-            { value: ">50k" as const, label: "> 50 000 €" },
-            { value: "tbd" as const, label: "À définir" },
+            { v: "<5k" as const, l: "< 5 000 €" },
+            { v: "5-15k" as const, l: "5 – 15k €" },
+            { v: "15-50k" as const, l: "15 – 50k €" },
+            { v: ">50k" as const, l: "> 50 000 €" },
+            { v: "tbd" as const, l: "À définir" },
           ].map((opt) => (
-            <button
-              key={opt.value}
-              type="button"
-              onClick={() => setData((d) => ({ ...d, budget: opt.value }))}
-              className={`p-3 rounded-lg border text-center transition-all duration-200 ${
-                data.budget === opt.value
-                  ? "border-aurad-500 bg-aurad-500/10 neon-border"
-                  : "border-white/10 bg-white/[0.02] hover:border-white/20"
-              }`}
+            <OptionBtn
+              key={opt.v}
+              selected={data.budget === opt.v}
+              onClick={() => setData((d) => ({ ...d, budget: opt.v }))}
+              centered
             >
-              <span className="text-sm font-medium text-white">
-                {opt.label}
-              </span>
-            </button>
+              <span className="text-[13px] font-semibold">{opt.l}</span>
+            </OptionBtn>
           ))}
         </div>
       </div>
@@ -319,18 +332,18 @@ export const QualificationForm: React.FC = () => {
   );
 
   const renderStep3 = () => (
-    <div className="form-step-content">
-      <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+    <div>
+      <h3 className="text-[22px] font-bold text-white mb-1.5">
         Vos coordonnées
       </h3>
-      <p className="text-gray-400 mb-8">
+      <p className="text-slate-500 text-sm mb-5">
         Pour que je puisse vous recontacter rapidement.
       </p>
-      <div className="space-y-4">
+      <div className="flex flex-col gap-3">
         <div>
           <label
             htmlFor="qf-name"
-            className="block text-sm font-medium text-gray-300 mb-1"
+            className="block text-[13px] text-slate-400 mb-1.5"
           >
             Nom complet *
           </label>
@@ -342,13 +355,13 @@ export const QualificationForm: React.FC = () => {
             onKeyDown={handleKeyDown}
             placeholder="Jean Dupont"
             autoFocus
-            className="w-full bg-white/[0.03] border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-aurad-500 focus:ring-1 focus:ring-aurad-500/50 transition-colors"
+            className="form-input"
           />
         </div>
         <div>
           <label
             htmlFor="qf-email"
-            className="block text-sm font-medium text-gray-300 mb-1"
+            className="block text-[13px] text-slate-400 mb-1.5"
           >
             Email professionnel *
           </label>
@@ -359,16 +372,16 @@ export const QualificationForm: React.FC = () => {
             onChange={(e) => setData((d) => ({ ...d, email: e.target.value }))}
             onKeyDown={handleKeyDown}
             placeholder="jean@entreprise.com"
-            className="w-full bg-white/[0.03] border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-aurad-500 focus:ring-1 focus:ring-aurad-500/50 transition-colors"
+            className="form-input"
           />
         </div>
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label
               htmlFor="qf-phone"
-              className="block text-sm font-medium text-gray-300 mb-1"
+              className="block text-[13px] text-slate-400 mb-1.5"
             >
-              Téléphone <span className="text-gray-500">(optionnel)</span>
+              Téléphone <span className="text-slate-600">(opt.)</span>
             </label>
             <input
               id="qf-phone"
@@ -379,15 +392,15 @@ export const QualificationForm: React.FC = () => {
               }
               onKeyDown={handleKeyDown}
               placeholder="06 12 34 56 78"
-              className="w-full bg-white/[0.03] border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-aurad-500 focus:ring-1 focus:ring-aurad-500/50 transition-colors"
+              className="form-input"
             />
           </div>
           <div>
             <label
               htmlFor="qf-company"
-              className="block text-sm font-medium text-gray-300 mb-1"
+              className="block text-[13px] text-slate-400 mb-1.5"
             >
-              Entreprise <span className="text-gray-500">(optionnel)</span>
+              Entreprise <span className="text-slate-600">(opt.)</span>
             </label>
             <input
               id="qf-company"
@@ -398,17 +411,17 @@ export const QualificationForm: React.FC = () => {
               }
               onKeyDown={handleKeyDown}
               placeholder="Nom de l'entreprise"
-              className="w-full bg-white/[0.03] border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-aurad-500 focus:ring-1 focus:ring-aurad-500/50 transition-colors"
+              className="form-input"
             />
           </div>
         </div>
       </div>
-      <div className="mt-6 flex items-center justify-center gap-2 text-xs text-gray-500 bg-white/[0.02] p-3 rounded-lg border border-white/5">
-        <Lock className="w-3.5 h-3.5" />
-        <p>Vos données sont strictement confidentielles. Zéro spam.</p>
+      <div className="mt-4 inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg text-slate-600 text-[12px] bg-white/[0.02] border border-white/[0.05]">
+        <Lock className="w-3.5 h-3.5" strokeWidth={2} />
+        Vos données sont strictement confidentielles. Zéro spam.
       </div>
       {error && (
-        <p className="mt-4 text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-3">
+        <p className="mt-3 text-[13px] text-red-400 bg-red-400/10 border border-red-400/20 rounded-lg px-3.5 py-2.5">
           {error}
         </p>
       )}
@@ -416,59 +429,48 @@ export const QualificationForm: React.FC = () => {
   );
 
   const renderStep4 = () => (
-    <div className="form-step-content text-center py-8">
-      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-aurad-500/20 text-aurad-400 mb-6 confirmation-icon">
-        <CheckCircle className="w-8 h-8" />
+    <div className="text-center py-6">
+      <div className="confirmation-icon w-16 h-16 mx-auto mb-5 rounded-full flex items-center justify-center text-aurad-400 bg-aurad-400/10 border border-aurad-400/30">
+        <CheckCircle className="w-8 h-8" strokeWidth={2} />
       </div>
-      <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
+      <h3 className="text-[24px] font-bold text-white mb-2">
         Demande envoyée !
       </h3>
-      <p className="text-gray-400 mb-6 max-w-md mx-auto">
+      <p className="text-slate-500 mb-6 max-w-[360px] mx-auto leading-[1.6]">
         Merci{" "}
-        <span className="text-white font-medium">
+        <span className="text-white font-semibold">
           {data.name.split(" ")[0]}
         </span>
-        . J'analyse votre besoin et reviens vers vous sous 24h.
+        . J&apos;analyse votre besoin et reviens vers vous sous 24h.
       </p>
-      <div className="glass-card rounded-xl p-6 text-left max-w-sm mx-auto">
-        <h4 className="text-sm font-medium text-gray-400 mb-3 uppercase tracking-wider">
-          Récapitulatif
-        </h4>
-        <dl className="space-y-2 text-sm">
-          <div className="flex justify-between">
-            <dt className="text-gray-500">Besoin</dt>
-            <dd className="text-white font-medium">
-              {DOMAIN_LABELS[data.domain || ""] || data.domain}
-            </dd>
+      <div className="bg-white/[0.02] border border-white/[0.06] rounded-[10px] px-5 py-4 max-w-[280px] mx-auto text-left">
+        {[
+          ["Besoin", DOMAIN_LABELS[data.domain || ""] || data.domain || ""],
+          [
+            "Calendrier",
+            {
+              urgent: "Urgent",
+              court: "Court terme",
+              moyen: "Moyen terme",
+              exploration: "Exploration",
+            }[data.timeline || "exploration"],
+          ],
+          [
+            "Budget",
+            {
+              "<5k": "< 5k€",
+              "5-15k": "5–15k€",
+              "15-50k": "15–50k€",
+              ">50k": "> 50k€",
+              tbd: "À définir",
+            }[data.budget || "tbd"],
+          ],
+        ].map(([k, v]) => (
+          <div key={k} className="flex justify-between text-[13px] py-1">
+            <span className="text-slate-600">{k}</span>
+            <span className="text-white font-semibold">{v}</span>
           </div>
-          <div className="flex justify-between">
-            <dt className="text-gray-500">Calendrier</dt>
-            <dd className="text-white font-medium">
-              {
-                {
-                  urgent: "Urgent",
-                  court: "Court terme",
-                  moyen: "Moyen terme",
-                  exploration: "Exploration",
-                }[data.timeline || "exploration"]
-              }
-            </dd>
-          </div>
-          <div className="flex justify-between">
-            <dt className="text-gray-500">Budget</dt>
-            <dd className="text-white font-medium">
-              {
-                {
-                  "<5k": "< 5k€",
-                  "5-15k": "5-15k€",
-                  "15-50k": "15-50k€",
-                  ">50k": "> 50k€",
-                  tbd: "À définir",
-                }[data.budget || "tbd"]
-              }
-            </dd>
-          </div>
-        </dl>
+        ))}
       </div>
     </div>
   );
@@ -482,97 +484,98 @@ export const QualificationForm: React.FC = () => {
   ];
 
   return (
-    <div className="glass-card rounded-2xl p-1 max-w-2xl mx-auto">
-      <div className="bg-slate-950/95 md:bg-slate-950/80 md:backdrop-blur-xl rounded-xl overflow-hidden">
-        {!submitted && (
-          <div className="h-1 bg-white/5">
-            <div
-              className="h-full bg-gradient-to-r from-aurad-500 to-aurad-300 transition-all duration-500 ease-out"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-        )}
-
-        {!submitted && (
-          <div className="flex items-center justify-between px-6 pt-5 pb-0">
-            <span className="text-xs text-gray-500 font-medium">
+    <div className="bg-white/[0.02] border border-white/[0.07] rounded-[18px] overflow-hidden max-w-[640px] mx-auto">
+      {/* Progress */}
+      {!submitted && (
+        <div className="px-6 pt-5">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-[12px] text-slate-600 font-medium">
               Étape {step + 1} / {TOTAL_STEPS - 1}
             </span>
-            <div className="flex gap-1.5">
+            <div className="flex gap-1">
               {Array.from({ length: TOTAL_STEPS - 1 }).map((_, i) => (
                 <div
                   key={i}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i <= step ? "w-6 bg-aurad-500" : "w-1.5 bg-white/10"
-                  }`}
+                  className="h-1 rounded-sm transition-all duration-300 [transition-timing-function:cubic-bezier(.16,1,.3,1)]"
+                  style={{
+                    background:
+                      i <= step ? "#22d3ee" : "rgba(255,255,255,0.07)",
+                    width: i <= step ? 20 : 6,
+                  }}
                 />
               ))}
             </div>
           </div>
-        )}
-
-        <div className="px-6 py-8 relative overflow-hidden">
-          <div
-            key={step}
-            className={`form-step-animate ${direction === "next" ? "form-slide-in-right" : "form-slide-in-left"}`}
-          >
-            {steps[step]()}
+          <div className="progress-track">
+            <div className="progress-fill" style={{ width: `${progress}%` }} />
           </div>
         </div>
+      )}
 
-        {!submitted && (
-          <div className="flex items-center justify-between px-6 pb-6">
-            {step > 0 ? (
-              <button
-                type="button"
-                onClick={prev}
-                className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/5"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                Retour
-              </button>
-            ) : (
-              <div />
-            )}
-
-            {step < 3 ? (
-              <button
-                type="button"
-                onClick={next}
-                disabled={!canAdvance()}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-aurad-500 text-white font-semibold rounded-lg hover:bg-aurad-400 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-aurad-500 disabled:hover:shadow-none"
-              >
-                Continuer
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            ) : step === 3 ? (
-              <button
-                type="button"
-                onClick={handleSubmit}
-                disabled={!canAdvance() || submitting}
-                className="group relative inline-flex items-center gap-2 px-6 py-3 bg-aurad-500 text-white font-semibold rounded-lg hover:bg-aurad-400 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all overflow-hidden disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-aurad-500 disabled:hover:shadow-none"
-              >
-                {!submitting && !!canAdvance() && (
-                  <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-0"></div>
-                )}
-                <span className="relative z-10 flex items-center gap-2">
-                  {submitting ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      Envoi...
-                    </>
-                  ) : (
-                    <>
-                      Envoyer
-                      <Send className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
-                    </>
-                  )}
-                </span>
-              </button>
-            ) : null}
-          </div>
-        )}
+      {/* Step content */}
+      <div className="px-6 pt-6 pb-2">
+        <div
+          key={step}
+          className={direction === "next" ? "step-in-right" : "step-in-left"}
+        >
+          {steps[step]()}
+        </div>
       </div>
+
+      {/* Navigation */}
+      {!submitted && (
+        <div className="flex items-center justify-between px-6 pt-4 pb-6">
+          {step > 0 ? (
+            <button
+              type="button"
+              onClick={prev}
+              className="inline-flex items-center gap-2 text-[14px] text-slate-600 hover:text-white px-3 py-2 rounded-lg bg-transparent border-none cursor-pointer font-[inherit] transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" strokeWidth={2.5} />
+              Retour
+            </button>
+          ) : (
+            <div />
+          )}
+
+          {step < 3 ? (
+            <button
+              type="button"
+              onClick={next}
+              disabled={!canAdvance()}
+              className="btn-primary"
+              style={{ padding: "11px 22px", fontSize: 14 }}
+            >
+              Continuer
+              <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
+            </button>
+          ) : step === 3 ? (
+            <button
+              type="button"
+              onClick={handleSubmit}
+              disabled={!canAdvance() || submitting}
+              className="btn-primary"
+              style={{ padding: "11px 22px", fontSize: 14 }}
+            >
+              {submitting ? (
+                <>
+                  <Loader2
+                    className="w-4 h-4"
+                    strokeWidth={2}
+                    style={{ animation: "spin 1s linear infinite" }}
+                  />
+                  Envoi...
+                </>
+              ) : (
+                <>
+                  Envoyer
+                  <Send className="w-4 h-4" strokeWidth={2} />
+                </>
+              )}
+            </button>
+          ) : null}
+        </div>
+      )}
     </div>
   );
 };

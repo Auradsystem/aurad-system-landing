@@ -7,17 +7,17 @@ import { pushEvent } from "@/lib/gtm";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-black border-t border-white/10 pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-12">
-          <div className="flex items-center gap-3 mb-6 md:mb-0">
-            <Logo className="w-8 h-8" />
-            <span className="text-xl font-bold tracking-wider text-white">
+    <footer className="bg-black border-t border-white/[0.05] pt-13 pb-8">
+      <div className="max-w-[1240px] mx-auto px-5 sm:px-7">
+        <div className="flex flex-wrap justify-between items-center gap-6 mb-10">
+          <a href="/" className="flex items-center gap-3">
+            <Logo className="w-[30px] h-[30px]" />
+            <span className="text-[15px] font-bold tracking-[0.09em] text-white">
               AURAD <span className="text-aurad-400">SYSTEM</span>
             </span>
-          </div>
+          </a>
 
-          <div className="flex gap-6">
+          <div className="flex gap-4">
             <a
               href="mailto:dali.bensalem@auradsystem.com"
               aria-label="Envoyer un email"
@@ -28,9 +28,9 @@ export const Footer: React.FC = () => {
                   contact_location: "footer",
                 })
               }
-              className="text-gray-400 hover:text-aurad-400 transition-colors"
+              className="text-slate-700 hover:text-aurad-400 transition-colors"
             >
-              <Mail size={24} />
+              <Mail className="w-[18px] h-[18px]" strokeWidth={1.5} />
             </a>
             <a
               href="https://wa.me/33685189260"
@@ -44,9 +44,9 @@ export const Footer: React.FC = () => {
                   contact_location: "footer",
                 })
               }
-              className="text-gray-400 hover:text-green-400 transition-colors"
+              className="text-slate-700 hover:text-aurad-400 transition-colors"
             >
-              <MessageCircle size={24} />
+              <MessageCircle className="w-[18px] h-[18px]" strokeWidth={1.5} />
             </a>
             <a
               href="https://www.linkedin.com/in/dalibensalem"
@@ -60,18 +60,18 @@ export const Footer: React.FC = () => {
                   contact_location: "footer",
                 })
               }
-              className="text-gray-400 hover:text-aurad-400 transition-colors"
+              className="text-slate-700 hover:text-aurad-400 transition-colors"
             >
-              <Linkedin size={24} />
+              <Linkedin className="w-[18px] h-[18px]" strokeWidth={1.5} />
             </a>
           </div>
         </div>
 
-        <div className="border-t border-white/5 pt-8 text-center text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-white/[0.04] pt-6 flex flex-wrap justify-between gap-2 text-[12px] text-slate-800">
           <p>
             © {new Date().getFullYear()} Aurad System. Tous droits réservés.
           </p>
-          <p>Fondé en Juillet 2024 - Indépendant</p>
+          <p>Fondé en Juillet 2024 · Indépendant</p>
         </div>
       </div>
     </footer>

@@ -1,138 +1,137 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { pushEvent } from "@/lib/gtm";
 
+const valuePills = [
+  { icon: "⚡", label: "Prototype en 2 semaines" },
+  { icon: "◎", label: "1 interlocuteur unique" },
+  { icon: "◈", label: "BTP · Énergie · Industrie" },
+];
+
 export const Hero: React.FC = () => {
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
-    setIsDesktop(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-
   return (
     <section
       id="hero"
       aria-label="Présentation Aurad System"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-[72px]"
     >
-      {/* Video Background - desktop only (1.1 MB skip on mobile) */}
-      {isDesktop && (
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover opacity-20 z-[1]"
-        >
-          <source src="/videos/aurad-logo.webm" type="video/webm" />
-        </video>
-      )}
-
-      {/* Background Elements - hidden on mobile to save GPU */}
+      {/* Animated background blobs */}
       <div
-        className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-aurad-500/20 rounded-full blur-[120px] z-[2] opacity-60 pointer-events-none"
         aria-hidden="true"
-      ></div>
-      <div
-        className="hidden md:block absolute bottom-0 right-0 w-[600px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] z-[2] pointer-events-none"
-        aria-hidden="true"
-      ></div>
-
-      {/* Lightweight mobile gradient replacement */}
-      <div
-        className="md:hidden absolute inset-0 bg-gradient-to-b from-aurad-900/40 via-transparent to-aurad-950/60 z-[2] pointer-events-none"
-        aria-hidden="true"
-      ></div>
-
-      {/* Circuit Grid Background */}
-      <div
-        className="absolute inset-0 bg-[url('/noise.svg')] opacity-20 z-[2] pointer-events-none hidden md:block"
-        aria-hidden="true"
-      ></div>
-      <div
-        className="absolute inset-0 z-[2] pointer-events-none"
+        className="pointer-events-none absolute -top-[300px] -right-[200px] w-[800px] h-[800px] rounded-full blob-float"
         style={{
-          backgroundImage:
-            "linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)",
-          backgroundSize: "50px 50px",
+          background:
+            "radial-gradient(circle, rgba(34,211,238,0.10) 0%, transparent 70%)",
         }}
-      ></div>
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-[150px] -left-[100px] w-[600px] h-[600px] rounded-full blob-float-reverse"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%)",
+        }}
+      />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div>
-          {/* Text Content */}
-          <div className="text-center lg:text-left max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-aurad-900/50 border border-aurad-500/30 mb-6">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-aurad-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-aurad-500"></span>
-              </span>
-              <span className="text-aurad-200 text-xs font-medium tracking-wide uppercase">
-                Disponible pour nouveaux projets
-              </span>
+      {/* Grid overlay */}
+      <div className="grid-overlay" />
+
+      <div className="relative z-[2] max-w-[1240px] w-full mx-auto px-6 sm:px-7 text-center pt-20 pb-[120px]">
+        {/* Status badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-9 rounded-full bg-aurad-400/[0.06] border border-aurad-400/[0.18]">
+          <span className="relative flex w-2 h-2">
+            <span className="ping-cyan absolute inset-0 rounded-full bg-aurad-400 opacity-50" />
+            <span className="relative w-2 h-2 rounded-full bg-aurad-400 block" />
+          </span>
+          <span className="text-aurad-300 text-[11px] font-semibold tracking-[0.1em] uppercase">
+            Disponible pour nouveaux projets
+          </span>
+        </div>
+
+        {/* Main headline */}
+        <h1
+          className="font-bold text-white mb-7 leading-[1.04] tracking-[-0.03em]"
+          style={{ fontSize: "clamp(42px, 7.5vw, 96px)" }}
+        >
+          Je comprends votre métier.
+          <br />
+          <span
+            className="bg-clip-text text-transparent"
+            style={{
+              backgroundImage:
+                "linear-gradient(135deg, #67e8f9 0%, #22d3ee 45%, #38bdf8 100%)",
+              filter: "drop-shadow(0 0 30px rgba(34,211,238,0.35))",
+            }}
+          >
+            Je code la solution.
+          </span>
+        </h1>
+
+        {/* Subtitle */}
+        <p
+          className="text-slate-500 max-w-[580px] mx-auto mb-11 leading-[1.75]"
+          style={{ fontSize: "clamp(16px, 2.2vw, 20px)" }}
+        >
+          Consulting IA et développement sur-mesure pour les entreprises qui
+          veulent automatiser sans perdre le contrôle. Un interlocuteur unique,
+          du diagnostic au déploiement.
+        </p>
+
+        {/* CTAs */}
+        <div className="flex flex-wrap gap-3.5 justify-center mb-[60px]">
+          <a
+            href="#contact"
+            onClick={() =>
+              pushEvent({
+                event: "cta_click",
+                cta_text: "Evaluer mon projet",
+                cta_location: "hero",
+              })
+            }
+            className="btn-primary"
+          >
+            Évaluer mon projet
+            <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
+          </a>
+          <Link
+            href="/realisations"
+            onClick={() =>
+              pushEvent({
+                event: "cta_click",
+                cta_text: "Voir les realisations",
+                cta_location: "hero",
+              })
+            }
+            className="btn-secondary"
+          >
+            Voir les réalisations
+          </Link>
+        </div>
+
+        {/* Value pills */}
+        <div className="flex flex-wrap gap-2.5 justify-center">
+          {valuePills.map((p) => (
+            <div
+              key={p.label}
+              className="inline-flex items-center gap-2 px-[18px] py-2 rounded-full bg-white/[0.03] border border-white/[0.07] text-[13px] text-slate-400"
+            >
+              <span className="text-aurad-400 text-[11px]">{p.icon}</span>
+              {p.label}
             </div>
-
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
-              Je comprends votre métier. <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-aurad-300 to-blue-600 neon-text">
-                Je code la solution.
-              </span>
-            </h1>
-
-            <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              Consulting IA et développement sur-mesure pour les entreprises qui
-              veulent automatiser sans perdre le contrôle. Un interlocuteur
-              unique, du diagnostic au déploiement.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a
-                href="#contact"
-                onClick={() =>
-                  pushEvent({
-                    event: "cta_click",
-                    cta_text: "Evaluer mon projet",
-                    cta_location: "hero",
-                  })
-                }
-                className="group relative px-8 py-4 bg-aurad-500 text-white font-bold rounded-lg overflow-hidden transition-colors hover:bg-aurad-400 hover:shadow-[0_0_20px_rgba(34,211,238,0.5)]"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  Évaluer mon projet{" "}
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </a>
-              <Link
-                href="/realisations"
-                onClick={() =>
-                  pushEvent({
-                    event: "cta_click",
-                    cta_text: "Voir les realisations",
-                    cta_location: "hero",
-                  })
-                }
-                className="px-8 py-4 bg-white/5 border border-white/10 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
-              >
-                Voir les réalisations
-              </Link>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-gray-500">
-        <div className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center p-1">
-          <div className="w-1 h-2 bg-aurad-400 rounded-full"></div>
+      <div
+        aria-hidden="true"
+        className="absolute bottom-9 left-1/2 -translate-x-1/2 bounce-soft"
+      >
+        <div className="w-6 h-10 border-[1.5px] border-white/[0.15] rounded-xl flex justify-center pt-[5px] pb-[5px]">
+          <div className="w-[3px] h-2 bg-aurad-400 rounded-sm scroll-dot" />
         </div>
       </div>
     </section>

@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
 import { Suspense, lazy } from "react";
 import { Hero } from "@/components/Hero";
-import { Services } from "@/components/Services";
+import { MarqueeTicker } from "@/components/MarqueeTicker";
 
+const Contact = lazy(() =>
+  import("@/components/Contact").then((m) => ({ default: m.Contact })),
+);
+const Services = lazy(() =>
+  import("@/components/Services").then((m) => ({ default: m.Services })),
+);
 const Methodology = lazy(() =>
   import("@/components/Methodology").then((m) => ({ default: m.Methodology })),
 );
 const About = lazy(() =>
   import("@/components/About").then((m) => ({ default: m.About })),
-);
-const Contact = lazy(() =>
-  import("@/components/Contact").then((m) => ({ default: m.Contact })),
 );
 const FAQ = lazy(() =>
   import("@/components/FAQ").then((m) => ({ default: m.FAQ })),
@@ -34,11 +37,10 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <MarqueeTicker />
       <Suspense fallback={null}>
         <Contact />
-      </Suspense>
-      <Services />
-      <Suspense fallback={null}>
+        <Services />
         <Methodology />
         <About />
         <FAQ />

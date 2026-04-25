@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
 import { Navbar } from "@/components/Navbar";
@@ -7,9 +7,9 @@ import { Footer } from "@/components/Footer";
 import { GTMPageView } from "@/components/GTMPageView";
 import "./globals.css";
 
-const outfit = Outfit({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -272,7 +272,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className={`scroll-smooth ${outfit.className}`}>
+    <html lang="fr" className={`scroll-smooth ${spaceGrotesk.className}`}>
       <head>
         {/* Consent Mode v2 defaults (GDPR/CNIL) */}
         <Script id="consent-mode" strategy="beforeInteractive">
